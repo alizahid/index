@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('avenir-next-thin.eot');
+	src: local('avenir-next-thin.eot'), url('avenir-next-thin.woff') format('woff'), url('avenir-next-thin.ttf') format('truetype'), url('avenir-next-thin.svg#webfont70BmqW20') format('svg');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('avenir-next-regular.eot');
+	src: local('avenir-next-regular.eot'), url('avenir-next-regular.woff') format('woff'), url('avenir-next-regular.ttf') format('truetype'), url('avenir-next-regular.svg#webfont70BmqW20') format('svg');
+	font-weight: 300;
+	font-style: normal;
+}
