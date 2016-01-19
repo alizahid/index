@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-var currency = localStorage.index_currency || 'USD';
-
 export function formatCurrency([amount, showCode]) {
+	var currency = localStorage.index_currency || 'USD';
+
 	var whole = parseInt(amount).toString(),
 		decimal = parseFloat(amount).toFixed(2),
 		length = whole.length;
