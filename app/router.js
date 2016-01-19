@@ -5,6 +5,14 @@ const Router = Ember.Router.extend({
 	location: config.locationType
 });
 
-Router.map(function () {});
+Router.map(function () {
+	this.route('settings');
+
+	this.route('incomes');
+
+	this.route('expenses');
+
+	this.route('edit');
+});
 
 export default Router;
