@@ -1,0 +1,12 @@
+<header class="thin">
+	<h1>Select Currency</h1>
+	<a href="#" class="back"></a>
+</header>
+
+<section class="thin">
+	<ul>
+	{{#each model as |currency|}}
+		<li class="{{if currency.selected 'selected-currency'}}" {{action 'selectCurrency' currency}}>{{currency.name}} &middot; {{currency.symbol}}</li>
+	{{/each}}
+	</ul>
+</section>
