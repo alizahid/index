@@ -1,5 +1,5 @@
 <header>
-	<h1>${{format-currency total}}</h1>
+	<h1>{{format-currency total true}}</h1>
 	{{link-to null 'settings' class="settings"}}
 </header>
 
@@ -13,7 +13,7 @@
 			{{item.description}}
 			<small>{{moment-from-now item.time}}</small>
 		</h3>
-		<span class="{{item.type}}">${{format-currency item.amount}}</span>
+		<span class="{{item.type}}">{{format-currency item.amount}}</span>
 	</div>
 	{{/each}}
 {{/scroll-view}}
