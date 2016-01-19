@@ -110,10 +110,15 @@ p {
 	line-height: 1.4;
 	margin: 1em 0;
 }
-ul li {
-	line-height: 1.4;
-	list-style: square;
-	margin: 1em 0 1em 2em;
+ul {
+	li {
+		border-top: 1px solid #EEE;
+		list-style: none;
+		padding: 1em;
+		&:first-of-type {
+			border: none;
+		}
+	}
 }
 
 /* Layout */
@@ -129,6 +134,13 @@ ul li {
 	padding: 1em;
 	position: relative;
 	flex: 0 0 auto;
+	&.thin {
+		h1 {
+			font-size: 1em;
+			margin: 0;
+			text-align: center;
+		}
+	}
 	img {
 		height: 3em;
 	}
@@ -145,12 +157,24 @@ ul li {
 		top: 1em;
 		width: 2em;
 	}
+	.back {
+		background: url('images/interface/cross.svg') center no-repeat;
+		background-size: 60%;
+		height: 3em;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 3em;
+	}
 }
 .ember-application > .ember-view section {
 	flex: 1;
 	overflow: auto;
 	padding: 0 1em;
 	position: relative;
+	&.thin {
+		padding: 0;
+	}
 }
 .ember-application > .ember-view footer {
 	a {
@@ -207,4 +231,8 @@ ul li {
 			color: #47B04B;
 		}
 	}
+}
+.selected-currency {
+	background: url('images/interface/checked.svg') calc(100% - 2em) center no-repeat;
+	background-size: 5em;
 }
