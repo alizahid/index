@@ -9,8 +9,9 @@ export default Ember.Controller.extend({
 			this.set('category', category);
 		},
 		submit: function () {
-			Ember.set(this.item, 'category', this.category.id);
 			Ember.set(this.item, 'type', 'income');
+
+			Ember.set(this.item, 'category', this.category.id);
 
 			if (!this.item.description) {
 				Ember.set(this.item, 'description', this.category.name);
