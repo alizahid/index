@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 import DS from 'ember-data';
 
 export default DS.Adapter.extend({
@@ -91,7 +93,7 @@ export default DS.Adapter.extend({
 		var adapter = this;
 
 		var index = adapter.data[type.modelName].reduce(function (value, record, index) {
-			if (record.id === data.id) {
+			if (record.id === snapshot.id) {
 				value = index;
 			}
 
