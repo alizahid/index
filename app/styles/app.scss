@@ -239,12 +239,11 @@ ul {
 	align-items: center;
 	flex-wrap: wrap;
 	display: flex;
+	font-size: 4vw;
 	justify-content: center;
-	padding: 0 !important;
+	padding: 1em !important;
 	figure {
-		background: #EEE;
-		border-radius: 0.5em;
-		margin: 1em;
+		flex: 0 0 calc(100% / 3);
 		padding: 1em;
 		text-align: center;
 		img {
@@ -254,6 +253,10 @@ ul {
 			color: #92989E;
 			line-height: 1.4;
 			margin-top: 1em;
+		}
+		&:active {
+			background: #EEE;
+			border-radius: 0.5em;
 		}
 	}
 }
