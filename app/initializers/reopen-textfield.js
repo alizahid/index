@@ -16,7 +16,7 @@ export function initialize() {
 				});
 			}
 		}.on('didInsertElement').observes('value')
-	})
+	});
 }
 
 export default {
