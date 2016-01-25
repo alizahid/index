@@ -9,7 +9,9 @@ module.exports = function (environment) {
 			FEATURES: {}
 		},
 
-		APP: {}
+		APP: {},
+
+		contentSecurityPolicyMeta: true
 	};
 
 	if (environment === 'development') {
