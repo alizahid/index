@@ -21,6 +21,10 @@ export default Ember.Controller.extend({
 		},
 		hideFooter: function () {
 			this.set('footer', false);
+		},
+
+		editItem: function (item) {
+			this.transitionToRoute('edit', item);
 		}
 	}
 });
