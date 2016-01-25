@@ -5,7 +5,7 @@
 
 <section class="{{unless category 'categories'}}">
 {{#if category}}
-	<form {{action 'submit' on='submit' }}>
+	<form {{action 'submit' on='submit'}}>
 		<label>
 			<strong>Amount</strong>
 			{{input type="number" step="any" required=true pattern="^\d+\.\d{2}$" value=item.amount placeholder="Example: 120.20"}}
