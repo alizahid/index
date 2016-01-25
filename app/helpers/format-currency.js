@@ -13,7 +13,25 @@ export function formatCurrency([amount, showCode]) {
 		whole = prefix + (prefix.length > 0 ? ',' : '') + whole.substr(length % 3).replace(/(\d{3})(?=\d)/g, '$1,');
 	}
 
-	return Ember.String.htmlSafe((showCode ? currency + ' ' : '') + whole + (showCode ? '' : '.' + decimal.slice(decimal.indexOf('.') + 1)));
+	var data = '';
+
+	if (showCode) {
+		data += currency + ' ';
+	}
+
+	data += whole;
+
+	if (showCode) {
+		decimal = decimal.slice(decimal.indexOf('.'));
+
+		if (parseFloat(decimal) > 0) {
+			data += decimal;
+		}
+	} else {
+		data += decimal.slice(decimal.indexOf('.'));
+	}
+
+	return Ember.String.htmlSafe(data);
 }
 
 export default Ember.Helper.helper(formatCurrency);
