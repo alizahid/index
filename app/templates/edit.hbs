@@ -1,0 +1,26 @@
+<header class="thin">
+	<h1>Edit</h1>
+	{{back-button}}
+</header>
+
+<section>
+	<form {{action 'submit' on='submit'}}>
+		<label>
+			<strong>Amount</strong>
+			{{input type="number" step="any" required=true pattern="^\d+\.\d{2}$" value=model.amount placeholder="Example: 120.20"}}
+		</label>
+		<label>
+			<strong>Details</strong>
+			{{textarea rows="3" value=model.description placeholder="Example: Tipped the hair stylist"}}
+		</label>
+		<label>
+			<strong>Time</strong>
+			{{input type="datetime-local" required=true value=model.time placeholder="Example: 120.20"}}
+		</label>
+		<hr>
+		<p class="buttons">
+			<button type="submit">Save</button>
+			<button type="button" class="red" {{action 'delete'}}>Delete</button>
+		</p>
+	</form>
+</section>

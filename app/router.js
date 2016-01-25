@@ -12,7 +12,9 @@ Router.map(function () {
 
 	this.route('expenses');
 
-	this.route('edit');
+	this.route('edit', {
+		path: 'edit/:id'
+	});
 });
 
 export default Router;
