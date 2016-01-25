@@ -77,10 +77,16 @@ button {
 	&.primary {
 		background: #47B04B;
 		color: #FFF;
+		&:active {
+			background: #61CA65;
+		}
 	}
-	&[type=submit]:active,
-	&.primary:active {
-		background: #2A7E2E;
+	&.red {
+		background: #F7412D;
+		color: #FFF;
+		&:active {
+			background: #FF5B47;
+		}
 	}
 }
 h1,
@@ -258,5 +264,12 @@ ul {
 			background: #EEE;
 			border-radius: 0.5em;
 		}
+	}
+}
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	button {
+		flex: 0 0 calc(50% - 1em);
 	}
 }
