@@ -13,7 +13,7 @@ module.exports = function (environment) {
 
 		contentSecurityPolicyMeta: true,
 		contentSecurityPolicy: {
-			'default-src': ["'none'", 'data:', 'gap:'],
+			'default-src': ["'self'", 'data:', 'gap:'],
 			'script-src': ["'self'"],
 			'font-src': ["'self'"],
 			'connect-src': ["'self'"],
