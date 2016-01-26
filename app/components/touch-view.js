@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	threshold: 500,
+	threshold: 1000,
 	started: 0,
 
 	event: null,
