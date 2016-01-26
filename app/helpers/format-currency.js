@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export function formatCurrency([amount, roundDecimalIfZero]) {
-	var currency = JSON.parse(localStorage.index_currency || '{"id":"USD","name":"US Dollar","symbol":"$"}');
+	var currency = JSON.parse(localStorage.index_currency);
 
 	var whole = parseInt(amount).toString(),
 		decimal = parseFloat(amount).toFixed(2),
