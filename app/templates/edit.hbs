@@ -15,7 +15,7 @@
 		</label>
 		<label>
 			<strong>Time</strong>
-			{{input type="datetime-local" required=true value=model.time placeholder="Example: 120.20"}}
+			<span class="input-field" {{action 'editTime'}}>{{moment-format model.time 'LLL'}}</span>
 		</label>
 		<hr>
 		<p class="buttons">

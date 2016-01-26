@@ -35,11 +35,13 @@ label {
 }
 input,
 select,
-textarea {
+textarea,
+.input-field {
 	appearance: none;
 	background: #E6E6E6;
 	border: none;
 	color: #000;
+	display: block;
 	font: inherit;
 	line-height: normal;
 	padding: 0.8em;

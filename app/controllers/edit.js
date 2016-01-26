@@ -1,13 +1,8 @@
 import Ember from 'ember';
-import moment from 'moment';
 
 export default Ember.Controller.extend({
 	actions: {
 		submit: function () {
-			var time = this.model.get('time');
-
-			Ember.set(this, 'model.time', moment(time).toDate());
-
 			this.model.save().then(function () {
 				window.history.back();
 			});
@@ -23,6 +18,18 @@ export default Ember.Controller.extend({
 						});
 					}
 				}, 'Remove item', ['Yes', 'Cancel']);
+			} catch (ex) {}
+		},
+		editTime: function () {
+			try {
+				var model = this.model;
+
+				datePicker.show({
+					date: model.get('time'),
+					mode: 'datetime'
+				}, function (time) {
+					model.set('time', time);
+				});
 			} catch (ex) {}
 		}
 	}
