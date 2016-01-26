@@ -17,6 +17,11 @@ body {
 	cursor: default;
 	font: 300 1em/1 'Atlas Grotesk', sans-serif;
 	overflow: hidden;
+	&.loading {
+		background: url('images/index.svg') center no-repeat;
+		background-size: 30vw;
+		height: 100vh;
+	}
 }
 a {
 	color: #333;
