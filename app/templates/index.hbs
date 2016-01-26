@@ -3,7 +3,7 @@
 	{{link-to null 'settings' class="settings"}}
 </header>
 
-{{#scroll-view start=(action 'hideFooter') end=(action 'showFooter')}}
+{{#scroll-view delay=300 start=(action 'hideFooter') end=(action 'showFooter')}}
 	{{#each model as |item|}}
 		{{#touch-view class="item" action=(action 'editItem' item)}}
 			<figure>
