@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 				Ember.set(this.item, 'description', this.category.name);
 			}
 			
-			this.store.createRecord('item', this.item).save().then(function (item) {
+			this.store.createRecord('item', this.item).save().then(function () {
 				window.history.back();
 			});
 		}
