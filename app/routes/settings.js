@@ -614,10 +614,12 @@ export default Ember.Route.extend({
 		this._super(controller, model);
 
 		if (localStorage.index_currency) {
-			var currency = model.findBy('symbol', localStorage.index_currency);
+			var currency = JSON.parse(localStorage.index_currency);
 
 			if (currency) {
-				controller.send('selectCurrency', currency);
+				model.setEach('selected', false);
+
+				Ember.set(model.findBy('id', currency.id), 'selected', true);
 			}
 		}
 	}

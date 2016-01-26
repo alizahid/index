@@ -6,7 +6,9 @@
 <section class="thin">
 	<ul>
 	{{#each model as |currency|}}
-		<li class="{{if currency.selected 'selected-currency'}}" {{action 'selectCurrency' currency}}>{{currency.name}} &middot; {{currency.symbol}}</li>
+		<li class="{{if currency.selected 'selected-currency'}}" {{action 'selectCurrency' currency}}>
+			{{currency.name}} &middot; {{#if currency.symbol}}{{currency.symbol}}{{else}}{{currency.id}}{{/if}}
+		</li>
 	{{/each}}
 	</ul>
 </section>
