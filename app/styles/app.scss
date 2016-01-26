@@ -22,7 +22,6 @@ a {
 	color: #333;
 	cursor: pointer;
 	text-decoration: none;
-	transition: all 100ms linear;
 }
 form {}
 label {
@@ -257,7 +256,7 @@ ul {
 }
 .selected-currency {
 	background: url('images/interface/checked.svg') calc(100% - 2em) center no-repeat;
-	background-size: 5em;
+	background-size: 4em;
 }
 .categories {
 	align-content: center;
