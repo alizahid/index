@@ -210,9 +210,28 @@ ul {
 	display: flex;
 	margin: 1em 0;
 	padding-top: 1em;
+	position: relative;
 	&:first-of-type {
 		border: none;
 		padding: 0;
+		&:active {
+			&:before {
+				height: calc(100% + 2em + 1px);
+				top: -1em;
+			}
+		}
+	}
+	&:active {
+		&:before {
+			background: #EEE;
+			content: '';
+			height: calc(100% + 1em + 2px);
+			left: -1em;
+			position: absolute;
+			top: -1px;
+			width: calc(100% + 2em);
+			z-index: -1;
+		}
 	}
 	figure img {
 		height: 2em;
