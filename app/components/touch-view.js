@@ -1,22 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	classNames: ['touch-view'],
-
 	threshold: 500,
 	started: 0,
 
-	touchStart: function (e) {
-		this.set('started', Date.now());
+	event: null,
+
+	touchStart: function () {
+		var event = Ember.run.throttle(this, 'action', null, this.threshold, false);
+
+		this.set('event', event);
 	},
 
 	touchEnd: function (e) {
-		if (Date.now() - this.started > this.threshold) {
-			if (typeof this.action === 'function') {
-				this.action();
-			}
-		}
-
-		this.set('started', 0);
+		Ember.run.cancel(this.event);
 	}
 });
