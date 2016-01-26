@@ -11,7 +11,16 @@ module.exports = function (environment) {
 
 		APP: {},
 
-		contentSecurityPolicyMeta: true
+		contentSecurityPolicyMeta: true,
+		contentSecurityPolicy: {
+			'default-src': ["'none'", 'data:', 'gap:'],
+			'script-src': ["'self'"],
+			'font-src': ["'self'"],
+			'connect-src': ["'self'"],
+			'img-src': ["'self'"],
+			'style-src': ["'self'", 'unsafe-inline'],
+			'media-src': ["'self'", '*']
+		}
 	};
 
 	if (environment === 'development') {}
