@@ -24,7 +24,7 @@ body {
 	}
 }
 a {
-	color: #333;
+	color: #3E4EB8;
 	cursor: pointer;
 	text-decoration: none;
 }
@@ -67,17 +67,16 @@ textarea {
 	min-height: 6em;
 }
 button {
-	background: #E6E6E6;
+	background: #92989E;
 	border: none;
 	cursor: pointer;
-	color: #666;
+	color: #FFF;
 	font: inherit;
 	line-height: 1;
 	padding: 1em;
-	transition: all 100ms linear;
 	width: 100%;
 	&:active {
-		color: #B8B8B8;
+		color: #B8BCC0;
 	}
 	&[type=submit],
 	&.primary {
@@ -123,6 +122,10 @@ p {
 	margin: 1em 0;
 }
 ul {
+	margin: 1em 0;
+	.thin & {
+		margin: 0;
+	}
 	li {
 		border-top: 1px solid #EEE;
 		list-style: none;
