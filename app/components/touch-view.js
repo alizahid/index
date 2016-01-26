@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	threshold: 1000,
+	threshold: 500,
 	started: 0,
 
 	event: null,
@@ -12,7 +12,7 @@ export default Ember.Component.extend({
 		this.set('event', event);
 	},
 
-	touchEnd: function (e) {
+	touchEnd: function () {
 		Ember.run.cancel(this.event);
 	}
 });
