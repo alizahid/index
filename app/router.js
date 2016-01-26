@@ -6,7 +6,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-	this.route('settings');
+	this.route('settings', function () {
+		this.route('currency');
+
+		this.route('about');
+	});
 
 	this.route('incomes');
 

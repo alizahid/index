@@ -1,0 +1,15 @@
+<header class="thin">
+	<h1>Settings</h1>
+	{{back-button}}
+</header>
+
+<section class="thin">
+	<ul>
+		{{link-to 'Change currency' 'settings.currency' tagName="li" data-icon="currency"}}
+		<li {{action 'exportData'}} data-icon="export">Export data</li>
+		<li {{action 'clearData'}} data-icon="clear">Clear all data</li>
+		{{link-to 'About' 'settings.about' tagName="li" data-icon="about"}}
+		<li {{action 'rate'}} data-icon="rate">Rate Index</li>
+		<li {{action 'share'}} data-icon="share">Share Index</li>
+	</ul>
+</section>

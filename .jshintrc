@@ -4,6 +4,7 @@
     "window",
     "-Promise",
     "datePicker",
+    "AppRate",
     "shortid"
   ],
   "browser": true,

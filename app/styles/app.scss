@@ -133,6 +133,56 @@ ul {
 		&:first-of-type {
 			border: none;
 		}
+		&:active {
+			position: relative;
+			&[data-ember-action],
+			&.ember-view {
+				&:before {
+					background: #EEE;
+					content: '';
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+					z-index: -1;
+				}
+			}
+		}
+		&[data-icon] {
+			padding-left: 3.25em;
+			position: relative;
+			&:after {
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 1.75em;
+				content: '';
+				display: block;
+				height: 3em;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 3em;
+			}
+			&[data-icon=currency]:after {
+				background-image: url('images/menu/currency.png');
+			}
+			&[data-icon=export]:after {
+				background-image: url('images/menu/export.png');
+			}
+			&[data-icon=clear]:after {
+				background-image: url('images/menu/clear.png');
+			}
+			&[data-icon=about]:after {
+				background-image: url('images/menu/about.png');
+			}
+			&[data-icon=rate]:after {
+				background-image: url('images/menu/rate.png');
+			}
+			&[data-icon=share]:after {
+				background-image: url('images/menu/share.png');
+			}
+		}
 	}
 }
 
