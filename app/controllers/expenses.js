@@ -17,6 +17,10 @@ export default Ember.Controller.extend({
 			this.set('node', node);
 		},
 		submit: function () {
+			if (!this.item.amount) {
+				return;
+			}
+
 			Ember.set(this.item, 'type', 'expense');
 
 			var description = this.category.name;

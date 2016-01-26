@@ -3,6 +3,10 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	actions: {
 		submit: function () {
+			if (!this.item.amount) {
+				return;
+			}
+
 			this.model.save().then(function () {
 				window.history.back();
 			});
