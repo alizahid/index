@@ -3,6 +3,8 @@
     "document",
     "window",
     "-Promise",
+    "$",
+    "cordova",
     "datePicker",
     "AppRate",
     "shortid"
