@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
-export function formatCurrency([amount, showCode]) {
-	var currency = localStorage.index_currency || 'USD';
+export function formatCurrency([amount, roundDecimalIfZero]) {
+	var currency = JSON.parse(localStorage.index_currency || '{"id":"USD","name":"US Dollar","symbol":"$"}');
 
 	var whole = parseInt(amount).toString(),
 		decimal = parseFloat(amount).toFixed(2),
@@ -13,15 +13,9 @@ export function formatCurrency([amount, showCode]) {
 		whole = prefix + (prefix.length > 0 ? ',' : '') + whole.substr(length % 3).replace(/(\d{3})(?=\d)/g, '$1,');
 	}
 
-	var data = '';
+	var data = (currency.symbol || currency.id + ' ') + whole;
 
-	if (showCode) {
-		data += currency + ' ';
-	}
-
-	data += whole;
-
-	if (showCode) {
+	if (roundDecimalIfZero) {
 		decimal = decimal.slice(decimal.indexOf('.'));
 
 		if (parseFloat(decimal) > 0) {
