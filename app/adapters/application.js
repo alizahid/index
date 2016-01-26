@@ -20,6 +20,12 @@ export default DS.Adapter.extend({
 		localStorage.setItem(this.namespace, JSON.stringify(this.data));
 	},
 
+	clear: function () {
+		this.set('data', {});
+
+		this.sync();
+	},
+
 	createRecord: function (store, type, snapshot) {
 		var data = this.serialize(snapshot, {
 			includeId: true
