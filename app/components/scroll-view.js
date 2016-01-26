@@ -7,7 +7,8 @@ export default Ember.Component.extend({
 		var start = this.start,
 			end = this.end;
 
-		var timer;
+		var timer,
+			delay = this.delay || 500;
 
 		this.$().on('scroll', function () {
 			if (!timer) {
@@ -26,7 +27,7 @@ export default Ember.Component.extend({
 				}
 
 				timer = null;
-			}, 500);
+			}, delay);
 		});
 	}
 });
