@@ -3,7 +3,7 @@
 	{{link-to null 'settings' class="settings"}}
 </header>
 
-{{#scroll-view delay=300 start=(action 'hideFooter') end=(action 'showFooter')}}
+<section class="items">
 	{{#each model as |item|}}
 		{{#touch-view class="item" action=(action 'editItem' item)}}
 			<figure>
@@ -16,11 +16,9 @@
 			<span class="{{item.type}}">{{format-currency item.amount}}</span>
 		{{/touch-view}}
 	{{/each}}
-{{/scroll-view}}
+</section>
 
-{{#if footer}}
 <footer>
 	{{link-to null 'expenses' class="expense"}}
 	{{link-to null 'incomes' class="income"}}
 </footer>
-{{/if}}
