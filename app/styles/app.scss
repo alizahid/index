@@ -233,9 +233,10 @@ ul {
 }
 .ember-application > .ember-view section {
 	flex: 1;
-	overflow: auto;
+	overflow-y: scroll;
 	padding: 0 1em;
 	position: relative;
+	-webkit-overflow-scrolling: touch;
 	&.thin {
 		padding: 0;
 	}
