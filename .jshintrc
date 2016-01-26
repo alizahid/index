@@ -3,6 +3,7 @@
     "document",
     "window",
     "-Promise",
+    "datePicker",
     "shortid"
   ],
   "browser": true,
