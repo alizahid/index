@@ -5,7 +5,7 @@ export default {
 
 		document.addEventListener('deviceready', function () {
 			try {
-				AppRate.preferences.storeAppURL.ios = '123123123';
+				AppRate.preferences.storeAppURL.ios = '1078789240';
 				AppRate.preferences.storeAppURL.android = 'market://details?id=io.index';
 
 				AppRate.preferences.customLocale = {
