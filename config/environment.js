@@ -16,7 +16,7 @@ module.exports = function (environment) {
 			'default-src': ["'self'", 'data:', 'gap:'],
 			'script-src': ["'self'"],
 			'font-src': ["'self'"],
-			'connect-src': ["'self'"],
+			'connect-src': ["'self'", 'https://designplox.com'],
 			'img-src': ["'self'"],
 			'style-src': ["'self'", 'unsafe-inline'],
 			'media-src': ["'self'", '*']
