@@ -18,7 +18,10 @@ export default Ember.Controller.extend({
 								data: JSON.stringify({
 									email: email,
 									data: data.item
-								})
+								}),
+								beforeSend: function () {
+									Loading.show();
+								}
 							}).then(function (data) {
 								try {
 									navigator.notification.alert(data.message, null, 'Success');
@@ -27,6 +30,8 @@ export default Ember.Controller.extend({
 								try {
 									navigator.notification.alert(xhr.responseJSON ? xhr.responseJSON.message : 'A server error occurred. Please try again later.', null, 'Error');
 								} catch (ex) {}
+							}).always(function () {
+								Loading.hide();
 							});
 						}
 					}, 'Export data', ['Send', 'Cancel']);

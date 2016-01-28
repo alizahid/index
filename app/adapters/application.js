@@ -27,6 +27,8 @@ export default DS.Adapter.extend({
 	},
 
 	createRecord: function (store, type, snapshot) {
+		Loading.show();
+
 		var data = this.serialize(snapshot, {
 			includeId: true
 		});
@@ -41,10 +43,14 @@ export default DS.Adapter.extend({
 
 		return new Ember.RSVP.Promise(function (resolve) {
 			resolve(data);
+
+			Loading.hide();
 		});
 	},
 
 	findRecord: function (store, type, id) {
+		Loading.show();
+
 		var data = this.data[type.modelName].findBy('id', id);
 
 		return new Ember.RSVP.Promise(function (resolve, reject) {
@@ -53,9 +59,13 @@ export default DS.Adapter.extend({
 			} else {
 				reject();
 			}
+
+			Loading.hide();
 		});
 	},
 	findAll: function (store, type) {
+		Loading.show();
+
 		var data = this.data[type.modelName];
 
 		return new Ember.RSVP.Promise(function (resolve, reject) {
@@ -64,10 +74,14 @@ export default DS.Adapter.extend({
 			} else {
 				reject();
 			}
+
+			Loading.hide();
 		});
 	},
 
 	updateRecord: function (store, type, snapshot) {
+		Loading.show();
+
 		var adapter = this;
 
 		var data = adapter.serialize(snapshot, {
@@ -92,10 +106,14 @@ export default DS.Adapter.extend({
 			} else {
 				reject();
 			}
+
+			Loading.hide();
 		});
 	},
 
 	deleteRecord: function (store, type, snapshot) {
+		Loading.show();
+
 		var adapter = this;
 
 		var index = adapter.data[type.modelName].reduce(function (value, record, index) {
@@ -116,6 +134,8 @@ export default DS.Adapter.extend({
 			} else {
 				reject();
 			}
+
+			Loading.hide();
 		});
 	},
 
