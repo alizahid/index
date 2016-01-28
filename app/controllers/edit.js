@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	actions: {
 		submit: function () {
-			if (!this.item.amount) {
+			if (!this.model.get('amount')) {
 				return;
 			}
 
