@@ -15,7 +15,7 @@ export default DS.Adapter.extend({
 		}
 	},
 
-	syncDelay: 5000,
+	syncDelay: 0,
 	sync: function () {
 		localStorage.setItem(this.namespace, JSON.stringify(this.data));
 	},
