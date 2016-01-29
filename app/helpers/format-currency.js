@@ -3,8 +3,9 @@ import Ember from 'ember';
 export function formatCurrency([amount, roundDecimalIfZero]) {
 	var currency = JSON.parse(localStorage.index_currency);
 
-	var whole = parseInt(amount).toString(),
+	var whole = Math.abs(parseInt(amount)).toString(),
 		decimal = parseFloat(amount).toFixed(2),
+		negative = amount < 0,
 		length = whole.length;
 
 	if (length > 3) {
@@ -13,7 +14,7 @@ export function formatCurrency([amount, roundDecimalIfZero]) {
 		whole = prefix + (prefix.length > 0 ? ',' : '') + whole.substr(length % 3).replace(/(\d{3})(?=\d)/g, '$1,');
 	}
 
-	var data = (currency.symbol || currency.id + ' ') + whole;
+	var data = '<span class="symbol">' + (currency.symbol || currency.id) + '</span>' + (negative ? ' -' : '') + whole;
 
 	if (roundDecimalIfZero) {
 		decimal = decimal.slice(decimal.indexOf('.'));
