@@ -3,20 +3,18 @@
 	{{link-to null 'settings' class="settings"}}
 </header>
 
-<section class="items">
-	{{#each model as |item|}}
-		{{#touch-view class="item" action=(action 'editItem' item)}}
-			<figure>
-				<img src="assets/images/icons/{{item.category}}.png">
-			</figure>
-			<h3>
-				{{item.description}}
-				<small>{{moment-from-now item.time}}</small>
-			</h3>
-			<span class="{{item.type}}">{{format-currency item.amount}}</span>
-		{{/touch-view}}
-	{{/each}}
-</section>
+{{#list-view content=model class="items" as |item|}}
+	{{#touch-view class="item" action=(action 'editItem' item)}}
+		<figure>
+			<img src="assets/images/icons/{{item.category}}.png">
+		</figure>
+		<h3>
+			{{item.description}}
+			<small>{{moment-from-now item.time}}</small>
+		</h3>
+		<span class="{{item.type}}">{{format-currency item.amount}}</span>
+	{{/touch-view}}
+{{/list-view}}
 
 <footer>
 	{{link-to null 'expenses' class="expense"}}
