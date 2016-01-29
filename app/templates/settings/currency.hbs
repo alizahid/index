@@ -4,11 +4,14 @@
 </header>
 
 <section class="thin">
+	{{input type="text" value=query placeholder="Search for currency"}}
 	<ul>
-	{{#each model as |currency|}}
+	{{#each currencies as |currency|}}
 		<li class="{{if currency.selected 'selected-currency'}}" {{action 'selectCurrency' currency}}>
 			{{currency.name}} &middot; {{#if currency.symbol}}{{currency.symbol}}{{else}}{{currency.id}}{{/if}}
 		</li>
+	{{else}}
+		<li>No match.</li>
 	{{/each}}
 	</ul>
 </section>
