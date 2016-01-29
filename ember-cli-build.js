@@ -15,7 +15,7 @@ module.exports = function (defaults) {
 		}
 	});
 
-	app.import('vendor/scripts/loading.js');
+	app.import('vendor/scripts/spinner.js');
 	app.import('vendor/scripts/shortid.min.js');
 
 	return app.toTree();

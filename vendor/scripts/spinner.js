@@ -1,4 +1,4 @@
-var Loading = {
+var Spinner = {
 	show: function () {
 		$('#loading').stop(true, true).fadeIn('fast');
 	},

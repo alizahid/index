@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 									data: data.item
 								}),
 								beforeSend: function () {
-									Loading.show();
+									Spinner.show();
 								}
 							}).then(function (data) {
 								try {
@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
 									navigator.notification.alert(xhr.responseJSON ? xhr.responseJSON.message : 'A server error occurred. Please try again later.', null, 'Error');
 								} catch (ex) {}
 							}).always(function () {
-								Loading.hide();
+								Spinner.hide();
 							});
 						}
 					}, 'Export data', ['Send', 'Cancel']);
