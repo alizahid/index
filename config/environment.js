@@ -18,7 +18,7 @@ module.exports = function (environment) {
 			'font-src': ["'self'"],
 			'connect-src': ["'self'", 'https://designplox.com'],
 			'img-src': ["'self'"],
-			'style-src': ["'self'", 'unsafe-inline'],
+			'style-src': ["'self'", "'unsafe-inline'"],
 			'media-src': ["'self'", '*']
 		}
 	};
