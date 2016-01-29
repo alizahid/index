@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	footer: true,
-
 	total: function () {
 		return this.model.reduce(function (total, item) {
 			if (item.get('type') === 'income') {
