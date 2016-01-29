@@ -11,7 +11,7 @@ module.exports = function (defaults) {
 			enabled: false
 		},
 		autoprefixer: {
-			browsers: ['last 2 version']
+			browsers: ['android >= 1, ios_saf >= 1, and_chr >= 1']
 		}
 	});
 
