@@ -1,7 +1,7 @@
 {
   "name": "index",
-  "version": "0.0.0",
-  "description": "Small description for index goes here",
+  "version": "1.2.1",
+  "description": "Sleek expense tracking",
   "private": true,
   "directories": {
     "doc": "doc",
