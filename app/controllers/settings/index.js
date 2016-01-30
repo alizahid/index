@@ -47,6 +47,7 @@ export default Ember.Controller.extend({
 				navigator.notification.confirm('Are you sure?', function (button) {
 					if (button === 1) {
 						store.adapterFor('application').clear();
+						store.unloadAll();
 
 						navigator.notification.alert('All data cleared.', null, 'Done');
 					}
