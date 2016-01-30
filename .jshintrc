@@ -8,7 +8,7 @@
     "datePicker",
     "AppRate",
     "Scroll",
-    "Loading",
+    "Spinner",
     "shortid"
   ],
   "browser": true,
