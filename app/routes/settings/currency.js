@@ -305,7 +305,7 @@ export default Ember.Route.extend({
 		}, {
 			id: 'LBP',
 			name: 'Lebanese Pound',
-			symbol: '\u00a3'
+			symbol: '\u0644.\u0644'
 		}, {
 			id: 'LKR',
 			name: 'Sri Lankan Rupee',
