@@ -41,5 +41,8 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-moment": "6.0.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.3.1"
   }
 }
