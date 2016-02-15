@@ -210,20 +210,21 @@ ul {
 			}
 			h1 {
 				color: #FFF;
-				margin-top: 1em;
+				margin-top: 2em;
 			}
 			.settings {
 				background: url('images/interface/settings.svg') center no-repeat;
+				right: 0;
 			}
 			.back {
-				background: url('images/interface/cross.svg') center no-repeat;
+				background: url('images/interface/back.svg') center no-repeat;
+				left: 0;
 			}
 			.settings,
 			.back {
 				background-size: 60%;
 				height: 3em;
 				position: absolute;
-				right: 0;
 				top: 0;
 				width: 3em;
 				&:active {
