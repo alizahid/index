@@ -189,76 +189,78 @@ ul {
 
 /* Layout */
 
-.ember-application > .ember-view {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	position: relative;
-}
-.ember-application > .ember-view header {
-	background: #3E4EB8;
-	padding: 1em;
-	position: relative;
-	flex: 0 0 auto;
-	&.thin {
-		h1 {
-			font-size: 1.5em;
+.ember-application {
+	> .ember-view {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		position: relative;
+		header {
+			background: #3E4EB8;
+			padding: 1em;
+			position: relative;
+			flex: 0 0 auto;
+			&.thin {
+				h1 {
+					font-size: 1.5em;
+				}
+			}
+			img {
+				height: 3em;
+			}
+			h1 {
+				color: #FFF;
+				margin-top: 1em;
+			}
+			.settings {
+				background: url('images/interface/settings.svg') center no-repeat;
+			}
+			.back {
+				background: url('images/interface/cross.svg') center no-repeat;
+			}
+			.settings,
+			.back {
+				background-size: 60%;
+				height: 3em;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 3em;
+				&:active {
+					background-color: rgba(255, 255, 255, 0.1);
+				}
+			}
 		}
-	}
-	img {
-		height: 3em;
-	}
-	h1 {
-		color: #FFF;
-		margin-top: 1em;
-	}
-	.settings {
-		background: url('images/interface/settings.svg') center no-repeat;
-	}
-	.back {
-		background: url('images/interface/cross.svg') center no-repeat;
-	}
-	.settings,
-	.back {
-		background-size: 60%;
-		height: 3em;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 3em;
-		&:active {
-			background-color: rgba(255, 255, 255, 0.1);
+		section {
+			flex: 1;
+			overflow-y: scroll;
+			padding: 0 1em;
+			position: relative;
+			-webkit-overflow-scrolling: touch;
+			&.thin {
+				padding: 0;
+			}
 		}
-	}
-}
-.ember-application > .ember-view section {
-	flex: 1;
-	overflow-y: scroll;
-	padding: 0 1em;
-	position: relative;
-	-webkit-overflow-scrolling: touch;
-	&.thin {
-		padding: 0;
-	}
-}
-.ember-application > .ember-view footer {
-	a {
-		background: #F7412D url('images/interface/minus.svg') center no-repeat;
-		background-size: 70%;
-		border-radius: 100%;
-		bottom: 1em;
-		color: #FFF;
-		height: 3em;
-		position: absolute;
-		text-align: center;
-		width: 3em;
-		&.expense {
-			left: 1em;
-		}
-		&.income {
-			background-color: #47B04B;
-			background-image: url('images/interface/plus.svg');
-			right: 1em;
+		footer {
+			a {
+				background: #F7412D url('images/interface/minus.svg') center no-repeat;
+				background-size: 70%;
+				border-radius: 100%;
+				bottom: 1em;
+				color: #FFF;
+				height: 3em;
+				position: absolute;
+				text-align: center;
+				width: 3em;
+				&.expense {
+					left: 1em;
+				}
+				&.income {
+					background-color: #47B04B;
+					background-image: url('images/interface/plus.svg');
+					right: 1em;
+				}
+			}
 		}
 	}
 }
