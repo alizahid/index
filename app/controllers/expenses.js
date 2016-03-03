@@ -6,24 +6,24 @@ export default Ember.Controller.extend({
 	item: {},
 
 	actions: {
-		selectCategory: function (category) {
+		selectCategory(category) {
 			this.set('category', category);
 
 			if (!category.nodes) {
 				this.set('node', true);
 			}
 		},
-		selectNode: function (node) {
+		selectNode(node) {
 			this.set('node', node);
 		},
-		submit: function () {
+		submit() {
 			if (!this.item.amount) {
 				return;
 			}
 
 			Ember.set(this.item, 'type', 'expense');
 
-			var description = this.category.name;
+			let description = this.category.name;
 
 			if (this.node === true) {
 				Ember.set(this.item, 'category', this.category.id);
@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
 				Ember.set(this.item, 'description', description);
 			}
 
-			this.store.createRecord('item', this.item).save().then(function () {
+			this.store.createRecord('item', this.item).save().then(() => {
 				window.history.back();
 			});
 		}

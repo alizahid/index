@@ -1,7 +1,9 @@
 /* jshint node: true */
 
-module.exports = function (environment) {
-	var ENV = {
+'use strict';
+
+module.exports = function(environment) {
+	let ENV = {
 		modulePrefix: 'index',
 		environment: environment,
 		defaultLocationType: 'auto',

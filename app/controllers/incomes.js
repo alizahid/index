@@ -5,10 +5,10 @@ export default Ember.Controller.extend({
 	item: {},
 
 	actions: {
-		selectCategory: function (category) {
+		selectCategory(category) {
 			this.set('category', category);
 		},
-		submit: function () {
+		submit() {
 			if (!this.item.amount) {
 				return;
 			}
@@ -20,8 +20,8 @@ export default Ember.Controller.extend({
 			if (!this.item.description) {
 				Ember.set(this.item, 'description', this.category.name);
 			}
-			
-			this.store.createRecord('item', this.item).save().then(function () {
+
+			this.store.createRecord('item', this.item).save().then(() => {
 				window.history.back();
 			});
 		}

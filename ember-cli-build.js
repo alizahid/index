@@ -2,10 +2,12 @@
 
 /* global require, module */
 
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+'use strict';
 
-module.exports = function (defaults) {
-	var app = new EmberApp(defaults, {
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
+module.exports = (defaults) => {
+	let app = new EmberApp(defaults, {
 		storeConfigInMeta: false,
 		fingerprint: {
 			enabled: false

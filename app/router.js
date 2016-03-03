@@ -5,8 +5,8 @@ const Router = Ember.Router.extend({
 	location: config.locationType
 });
 
-Router.map(function () {
-	this.route('settings', function () {
+Router.map(function() {
+	this.route('settings', function() {
 		this.route('currency');
 
 		this.route('about');

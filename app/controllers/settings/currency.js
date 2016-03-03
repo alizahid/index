@@ -1,23 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	currencies: function () {
-		var query = this.query || '',
+	currencies: Ember.computed('query', function() {
+		let query = this.query || '',
 			data = this.model;
 
 		return Ember.ArrayProxy.extend({
 			arrangedContent: Ember.computed.sort('content', 'props'),
 			props: ['selected:desc', 'name:asc']
 		}).create({
-			content: data.filter(function (currency) {
+			content: data.filter((currency) => {
 				if (currency.name.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
 					return true;
 				}
 			})
 		});
-	}.property('query'),
+	}),
 	actions: {
-		selectCurrency: function (currency) {
+		selectCurrency(currency) {
 			this.set('query', null);
 
 			Scroll.top();

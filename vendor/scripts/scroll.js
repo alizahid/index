@@ -1,10 +1,15 @@
-var Scroll = {
-	top: function () {
+const Scroll = new function() {
+	'use strict';
+
+	let section = $('section');
+
+	this.top = () => {
 		this.to(0);
-	},
-	to: function (value) {
-		$('section').stop(true, true).animate({
+	};
+
+	this.to = (value) => {
+		section.stop(true, true).animate({
 			scrollTop: value
 		});
-	}
+	};
 };

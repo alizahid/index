@@ -6,13 +6,13 @@ export default Ember.Component.extend({
 
 	event: null,
 
-	touchStart: function () {
-		var event = Ember.run.throttle(this, 'action', null, this.threshold, false);
+	touchStart() {
+		let event = Ember.run.throttle(this, 'action', null, this.threshold, false);
 
 		this.set('event', event);
 	},
 
-	touchEnd: function () {
+	touchEnd() {
 		Ember.run.cancel(this.event);
 	}
 });

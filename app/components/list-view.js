@@ -5,21 +5,23 @@ export default Ember.Component.extend({
 
 	items: 5,
 	delay: 250,
-	threshold: function () {
+	threshold: Ember.computed(() => {
 		return $(window).height() / 3;
-	}.property(),
+	}),
 
-	onInit: function () {
+	init() {
+		this._super(...arguments);
+
 		this.set('data', []);
-	}.on('init'),
+	},
 
-	didInsertElement: function () {
-		var _this = this,
+	didInsertElement() {
+		let _this = this,
 			listView = this.$();
 
-		var threshold = this.get('threshold');
+		let threshold = this.get('threshold');
 
-		var loadMore = function () {
+		let loadMore = () => {
 			if (listView.outerHeight() >= listView.prop('scrollHeight')) {
 				_this.loadMore(loadMore);
 			}
@@ -27,24 +29,24 @@ export default Ember.Component.extend({
 
 		Ember.run.next(loadMore);
 
-		listView.on('scroll', function () {
+		listView.on('scroll', () => {
 			if (listView.outerHeight() + listView.scrollTop() > listView.prop('scrollHeight') - threshold) {
 				Ember.run.throttle(_this, 'loadMore', null, _this.delay, false);
 			}
 		});
 	},
-	willDestroyElement: function () {
+	willDestroyElement() {
 		this.$().off('scroll');
 	},
 
-	loadMore: function (callback) {
-		var index = this.data.length;
+	loadMore(callback) {
+		let index = this.data.length;
 
 		if (index === this.content.get('length')) {
 			return;
 		}
 
-		Ember.run.next(this, function () {
+		Ember.run.next(this, () => {
 			this.data.pushObjects(this.content.slice(index, index + this.items));
 
 			if (typeof callback === 'function') {

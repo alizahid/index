@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function () {
+	model: function() {
 		return [{
 			id: 'food',
 			name: 'Food',
@@ -118,8 +118,8 @@ export default Ember.Route.extend({
 			name: 'Other'
 		}];
 	},
-	setupController: function (controller, model) {
-		this._super(controller, model);
+	setupController: function(controller, model) {
+		this._super(...arguments);
 
 		controller.setProperties({
 			category: null,

@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	actions: {
-		exportData: function () {
-			var data = this.store.adapterFor('application').data;
+		exportData() {
+			let data = this.store.adapterFor('application').data;
 
 			if (data.item && data.item.length > 0) {
 				try {
-					navigator.notification.prompt('Please enter your email. We will send the link here.', function (response) {
-						var button = response.buttonIndex,
+					navigator.notification.prompt('Please enter your email. We will send the link here.', (response) => {
+						let button = response.buttonIndex,
 							email = response.input1;
 
 						if (button === 1) {
@@ -19,18 +19,18 @@ export default Ember.Controller.extend({
 									email: email,
 									data: data.item
 								}),
-								beforeSend: function () {
+								beforeSend() {
 									Spinner.show();
 								}
-							}).then(function (data) {
+							}).then((data) => {
 								try {
 									navigator.notification.alert(data.message, null, 'Success');
 								} catch (ex) {}
-							}, function (xhr) {
+							}, (xhr) => {
 								try {
 									navigator.notification.alert(xhr.responseJSON ? xhr.responseJSON.message : 'A server error occurred. Please try again later.', null, 'Error');
 								} catch (ex) {}
-							}).always(function () {
+							}).always(() => {
 								Spinner.hide();
 							});
 						}
@@ -40,11 +40,11 @@ export default Ember.Controller.extend({
 				navigator.notification.alert('You have no data to export right now.', null, 'Export');
 			}
 		},
-		clearData: function () {
+		clearData() {
 			try {
-				var store = this.store;
+				let store = this.store;
 
-				navigator.notification.confirm('Are you sure?', function (button) {
+				navigator.notification.confirm('Are you sure?', (button) => {
 					if (button === 1) {
 						store.adapterFor('application').clear();
 						store.unloadAll();
@@ -54,12 +54,12 @@ export default Ember.Controller.extend({
 				}, 'Clear all data', ['Yes', 'Cancel']);
 			} catch (ex) {}
 		},
-		rate: function () {
+		rate() {
 			try {
 				AppRate.promptForRating(true);
 			} catch (ex) {}
 		},
-		share: function () {
+		share() {
 			try {
 				window.plugins.socialsharing.share('Check out Index, the sleek expense tracking app', 'Index', null, 'http://designplox.co/index');
 			} catch (ex) {}

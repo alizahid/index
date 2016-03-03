@@ -1,19 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	about: function () {
-		var messages = ['Index is an expense tracker. A fast, pretty one.',
-						'Index is an expense tracking app. Enjoy!',
-						'If you hadn\'t figured out already, Index is an expense tracker. Yes, I know I\'m sarcastic.'];
+	about: Ember.computed(() => {
+		let messages = ['Index is an expense tracker. A fast, pretty one.',
+			'Index is an expense tracking app. Enjoy!',
+			'If you haven\'t figured out already, Index is an expense tracker. Yes, I know I\'m sarcastic.'
+		];
 
-		var index = Math.floor(Math.random() * (messages.length));
+		let index = Math.floor(Math.random() * (messages.length));
 
 		return messages[index];
-	}.property().volatile(),
+	}).volatile(),
 
 	actions: {
-		openUrl: function (id) {
-			var url;
+		openUrl(id) {
+			let url;
 
 			switch (id) {
 				case 'designplox':

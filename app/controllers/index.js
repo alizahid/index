@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	total: function () {
-		return this.model.reduce(function (total, item) {
+	total: Ember.computed('model', 'model.[]', function() {
+		return this.model.reduce(function(total, item) {
 			if (item.get('type') === 'income') {
 				total += item.get('amount');
 			} else if (item.get('type') === 'expense') {
@@ -11,17 +11,16 @@ export default Ember.Controller.extend({
 
 			return total;
 		}, 0);
-	}.property('model', 'model.[]'),
+	}),
 
 	actions: {
-		showFooter: function () {
+		showFooter() {
 			this.set('footer', true);
 		},
-		hideFooter: function () {
+		hideFooter() {
 			this.set('footer', false);
 		},
-
-		editItem: function (item) {
+		editItem(item) {
 			this.transitionToRoute('edit', item);
 		}
 	}

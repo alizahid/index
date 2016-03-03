@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function () {
+	model() {
 		return [{
 			id: 'salary',
 			name: 'Salary'
@@ -16,8 +16,8 @@ export default Ember.Route.extend({
 			name: 'Other'
 		}];
 	},
-	setupController: function (controller, model) {
-		this._super(controller, model);
+	setupController(controller, model) {
+		this._super(...arguments);
 
 		controller.setProperties({
 			category: null,

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function () {
+	model() {
 		return [{
 			id: 'AED',
 			name: 'Emirati Dirham'
@@ -610,11 +610,11 @@ export default Ember.Route.extend({
 			symbol: 'Z$'
 		}];
 	},
-	setupController: function (controller, model) {
-		this._super(controller, model);
+	setupController(controller, model) {
+		this._super(...arguments);
 
 		if (localStorage.index_currency) {
-			var currency = JSON.parse(localStorage.index_currency);
+			let currency = JSON.parse(localStorage.index_currency);
 
 			if (currency) {
 				model.setEach('selected', false);

@@ -7,8 +7,8 @@ export default DS.Adapter.extend({
 
 	data: {},
 
-	init: function () {
-		var data = localStorage.getItem(this.namespace);
+	init() {
+		let data = localStorage.getItem(this.namespace);
 
 		if (data) {
 			this.set('data', JSON.parse(data));
@@ -16,20 +16,20 @@ export default DS.Adapter.extend({
 	},
 
 	syncDelay: 0,
-	sync: function () {
+	sync() {
 		localStorage.setItem(this.namespace, JSON.stringify(this.data));
 	},
 
-	clear: function () {
+	clear() {
 		this.set('data', {});
 
 		this.sync();
 	},
 
-	createRecord: function (store, type, snapshot) {
+	createRecord(store, type, snapshot) {
 		Spinner.show();
 
-		var data = this.serialize(snapshot, {
+		let data = this.serialize(snapshot, {
 			includeId: true
 		});
 
@@ -41,19 +41,19 @@ export default DS.Adapter.extend({
 
 		Ember.run.throttle(this, 'sync', null, this.syncDelay, false);
 
-		return new Ember.RSVP.Promise(function (resolve) {
+		return new Ember.RSVP.Promise((resolve) => {
 			resolve(data);
 
 			Spinner.hide();
 		});
 	},
 
-	findRecord: function (store, type, id) {
+	findRecord(store, type, id) {
 		Spinner.show();
 
-		var data = this.data[type.modelName].findBy('id', id);
+		let data = this.data[type.modelName].findBy('id', id);
 
-		return new Ember.RSVP.Promise(function (resolve, reject) {
+		return new Ember.RSVP.Promise((resolve, reject) => {
 			if (data) {
 				resolve(data);
 			} else {
@@ -63,12 +63,12 @@ export default DS.Adapter.extend({
 			Spinner.hide();
 		});
 	},
-	findAll: function (store, type) {
+	findAll(store, type) {
 		Spinner.show();
 
-		var data = this.data[type.modelName];
+		let data = this.data[type.modelName];
 
-		return new Ember.RSVP.Promise(function (resolve, reject) {
+		return new Ember.RSVP.Promise((resolve, reject) => {
 			if (data) {
 				resolve(data);
 			} else {
@@ -79,16 +79,16 @@ export default DS.Adapter.extend({
 		});
 	},
 
-	updateRecord: function (store, type, snapshot) {
+	updateRecord(store, type, snapshot) {
 		Spinner.show();
 
-		var adapter = this;
+		let adapter = this;
 
-		var data = adapter.serialize(snapshot, {
+		let data = adapter.serialize(snapshot, {
 			includeId: true
 		});
 
-		var index = adapter.data[type.modelName].reduce(function (value, record, index) {
+		let index = adapter.data[type.modelName].reduce((value, record, index) => {
 			if (record.id === data.id) {
 				value = index;
 			}
@@ -96,7 +96,7 @@ export default DS.Adapter.extend({
 			return value;
 		}, null);
 
-		return new Ember.RSVP.Promise(function (resolve, reject) {
+		return new Ember.RSVP.Promise((resolve, reject) => {
 			if (index >= 0) {
 				adapter.data[type.modelName][index] = data;
 
@@ -111,12 +111,12 @@ export default DS.Adapter.extend({
 		});
 	},
 
-	deleteRecord: function (store, type, snapshot) {
+	deleteRecord(store, type, snapshot) {
 		Spinner.show();
 
-		var adapter = this;
+		let adapter = this;
 
-		var index = adapter.data[type.modelName].reduce(function (value, record, index) {
+		let index = adapter.data[type.modelName].reduce((value, record, index) => {
 			if (record.id === snapshot.id) {
 				value = index;
 			}
@@ -124,7 +124,7 @@ export default DS.Adapter.extend({
 			return value;
 		}, null);
 
-		return new Ember.RSVP.Promise(function (resolve, reject) {
+		return new Ember.RSVP.Promise((resolve, reject) => {
 			if (index >= 0) {
 				adapter.data[type.modelName].splice(index, 1);
 
@@ -139,14 +139,14 @@ export default DS.Adapter.extend({
 		});
 	},
 
-	generateIdForRecord: function () {
+	generateIdForRecord() {
 		return shortid.generate();
 	},
 
-	shouldReloadRecord: function () {
+	shouldReloadRecord() {
 		return true;
 	},
-	shouldReloadAll: function () {
+	shouldReloadAll() {
 		return true;
 	}
 });

@@ -3,14 +3,14 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	tagName: 'section',
 
-	didInsertElement: function () {
-		var start = this.start,
+	didInsertElement() {
+		let start = this.start,
 			end = this.end;
 
-		var timer,
+		let timer,
 			delay = this.delay || 500;
 
-		this.$().on('scroll', function () {
+		this.$().on('scroll', () => {
 			if (!timer) {
 				if (typeof start === 'function') {
 					start();
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 				Ember.run.cancel(timer);
 			}
 
-			timer = Ember.run.later(function () {
+			timer = Ember.run.later(() => {
 				if (typeof end === 'function') {
 					end();
 				}

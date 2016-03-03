@@ -2,36 +2,36 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	actions: {
-		submit: function () {
+		submit() {
 			if (!this.model.get('amount')) {
 				return;
 			}
 
-			this.model.save().then(function () {
+			this.model.save().then(() => {
 				window.history.back();
 			});
 		},
-		delete: function () {
+		delete() {
 			try {
-				var model = this.model;
+				let model = this.model;
 
-				navigator.notification.confirm('Are you sure?', function (button) {
+				navigator.notification.confirm('Are you sure?', (button) => {
 					if (button === 1) {
-						model.destroyRecord().then(function () {
+						model.destroyRecord().then(() => {
 							window.history.back();
 						});
 					}
 				}, 'Remove item', ['Yes', 'Cancel']);
 			} catch (ex) {}
 		},
-		editTime: function () {
+		editTime() {
 			try {
-				var model = this.model;
+				let model = this.model;
 
 				datePicker.show({
 					date: model.get('time'),
 					mode: 'datetime'
-				}, function (time) {
+				}, (time) => {
 					model.set('time', time);
 				});
 			} catch (ex) {}
