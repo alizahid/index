@@ -1,13 +1,11 @@
-const Scroll = new function() {
-	'use strict';
+var Scroll = new function() {
+	var section = $('section');
 
-	let section = $('section');
-
-	this.top = () => {
+	this.top = function() {
 		this.to(0);
 	};
 
-	this.to = (value) => {
+	this.to = function(value) {
 		section.stop(true, true).animate({
 			scrollTop: value
 		});

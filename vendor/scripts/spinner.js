@@ -1,13 +1,11 @@
-const Spinner = new function() {
-	'use strict';
+var Spinner = new function() {
+	var loading = $('#loading');
 
-	let loading = $('#loading');
-
-	this.show = () => {
+	this.show = function() {
 		loading.stop(true, true).fadeIn('fast');
 	};
 
-	this.hide = () => {
+	this.hide = function() {
 		loading.stop(true, true).fadeOut('fast');
 	};
 };
