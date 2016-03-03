@@ -6,5 +6,6 @@ export function initialize() {
 
 export default {
 	name: 'setup',
+	after: 'cordova',
 	initialize
 };

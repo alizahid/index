@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	helpers: Ember.inject.service('helpers'),
+
 	about: Ember.computed(() => {
 		let messages = ['Index is an expense tracker. A fast, pretty one.',
 			'Index is an expense tracking app. Enjoy!',
@@ -27,9 +29,7 @@ export default Ember.Controller.extend({
 			}
 
 			if (url) {
-				try {
-					cordova.InAppBrowser.open(url + '?utm_medium=referral&utm_source=index', '_system');
-				} catch (ex) {}
+				this.get('helpers').openURL(url);
 			}
 		}
 	}

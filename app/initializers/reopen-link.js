@@ -8,5 +8,6 @@ export function initialize() {
 
 export default {
 	name: 'reopen-link',
+	after: 'cordova',
 	initialize
 };

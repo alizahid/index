@@ -1,8 +1,8 @@
 export function initialize(app) {
-	// app.deferReadiness();
+	app.deferReadiness();
 
-	document.addEventListener('deviceready', function() {
-		try {
+	if (window.cdv) {
+		document.addEventListener('deviceready', function() {
 			AppRate.preferences.storeAppURL.ios = '1078789240';
 			AppRate.preferences.storeAppURL.android = 'market://details?id=io.index';
 
@@ -13,10 +13,12 @@ export function initialize(app) {
 				laterButtonLabel: 'Remind me later',
 				rateButtonLabel: 'Rate it now'
 			};
-		} catch (ex) {}
 
+			app.advanceReadiness();
+		}, false);
+	} else {
 		app.advanceReadiness();
-	}, false);
+	}
 }
 
 export default {

@@ -24,5 +24,6 @@ export function initialize() {
 
 export default {
 	name: 'reopen-textfield',
+	after: 'cordova',
 	initialize
 };
