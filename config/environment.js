@@ -16,7 +16,7 @@ module.exports = function(environment) {
 		contentSecurityPolicyMeta: true,
 		contentSecurityPolicy: {
 			'default-src': ["'self'", 'data:', 'gap:'],
-			'script-src': ["'self'"],
+			'script-src': ["'self'", "'unsafe-inline'"],
 			'font-src': ["'self'"],
 			'connect-src': ["'self'", 'https://designplox.com'],
 			'img-src': ["'self'"],
