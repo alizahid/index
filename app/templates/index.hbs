@@ -11,6 +11,9 @@
 		<h3>
 			{{item.description}}
 			<small>{{moment-from-now item.time}}</small>
+			{{#unless item.account.isDefault}}
+				<small>{{item.account.name}}</small>
+			{{/unless}}
 		</h3>
 		<span class="{{item.type}}">{{format-currency item.amount}}</span>
 	</div>

@@ -2,24 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model() {
-		return [{
-			id: 'salary',
-			name: 'Salary'
-		}, {
-			id: 'gift',
-			name: 'Gift'
-		}, {
-			id: 'loan',
-			name: 'Loan'
-		}, {
-			id: 'other',
-			name: 'Other'
-		}];
+		return this.store.findAll('account');
 	},
 	setupController(controller) {
 		this._super(...arguments);
 
 		controller.setProperties({
+			account: null,
 			category: null,
 			item: {}
 		});
