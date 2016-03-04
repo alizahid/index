@@ -145,6 +145,30 @@ export default DS.Adapter.extend({
 		});
 	},
 
+	query(store, type, query) {
+		Spinner.show();
+
+		let keys = Object.keys(query);
+
+		let data = this.data[type.modelName].filter((item) => {
+			let include = true;
+
+			keys.forEach((key) => {
+				if (item[key] !== query[key]) {
+					include = false;
+				}
+			});
+
+			return include;
+		});
+
+		return new Ember.RSVP.Promise((resolve, reject) => {
+			resolve(data);
+
+			Spinner.hide();
+		});
+	},
+
 	generateIdForRecord() {
 		return shortid.generate();
 	},
