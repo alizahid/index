@@ -48,7 +48,9 @@ var Dialog = new function() {
 
 		dialog.append(content).wrapInner('<div class="overlay">').appendTo('body');
 
-		input.focus();
+		if (input) {
+			input.focus();
+		}
 
 		dialog.on('click', function(e) {
 			e.preventDefault();
