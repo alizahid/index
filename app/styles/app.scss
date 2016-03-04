@@ -372,11 +372,13 @@ ul {
 section.accounts {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	padding: 1em !important;
 	figure {
 		align-items: center;
 		display: flex;
-		flex: 1;
+		flex: 0 1 5em;
+		position: relative;
 		&:not(:first-child) {
 			border-top: 1px solid #EEE;
 		}
@@ -386,7 +388,6 @@ section.accounts {
 		}
 		&:active {
 			background: #EEE;
-			border-radius: 0.5em;
 		}
 	}
 }
