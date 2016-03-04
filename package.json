@@ -20,6 +20,8 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
+    "electron-packager": "5.2.1",
+    "electron-prebuilt": "0.36.9",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.4.1",
     "ember-cli-app-version": "^1.0.0",
@@ -39,10 +41,47 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.4.0",
     "ember-disable-proxy-controllers": "^1.0.1",
+    "ember-electron": "1.1.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-inspector": "1.9.5",
     "ember-load-initializers": "^0.5.0",
     "ember-moment": "6.0.0",
     "ember-resolver": "^2.0.3",
     "loader.js": "^4.0.0"
+  },
+  "main": "electron.js",
+  "ember-electron": {
+    "copy-files": [
+      "electron.js",
+      "package.json"
+    ],
+    "name": "Index",
+    "platform": "all",
+    "arch": "all",
+    "version": "0.36.9",
+    "app-bundle-id": "io.index",
+    "app-category-type": "public.app-category.finance",
+    "app-version": "2.0.0",
+    "asar": true,
+    "asar-unpack": null,
+    "asar-unpack-dir": null,
+    "build-version": "2.0.0",
+    "cache": null,
+    "helper-bundle-id": null,
+    "icon": "public/assets/icons/index",
+    "ignore": null,
+    "out": null,
+    "overwrite": null,
+    "prune": true,
+    "sign": null,
+    "strict-ssl": null,
+    "version-string": {
+      "CompanyName": "Ali Zahid",
+      "LegalCopyright": null,
+      "FileDescription": null,
+      "OriginalFilename": null,
+      "ProductName": "Index",
+      "InternalName": "Index"
+    }
   }
 }

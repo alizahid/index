@@ -25,7 +25,12 @@ module.exports = function(environment) {
 		}
 	};
 
-	if (environment === 'development') {}
+	if (environment === 'development') {
+		ENV.contentSecurityPolicy['script-src'].push('http://localhost:30820');
+
+		ENV.contentSecurityPolicy['connect-src'].push('http://localhost:30820');
+		ENV.contentSecurityPolicy['connect-src'].push('ws://localhost:30820');
+	}
 
 	if (environment === 'test') {
 		ENV.baseURL = '/';
