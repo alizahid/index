@@ -9,6 +9,7 @@
     "AppRate",
     "Scroll",
     "Spinner",
+    "Dialog",
     "shortid"
   ],
   "browser": true,
