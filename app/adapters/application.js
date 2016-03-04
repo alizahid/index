@@ -37,12 +37,18 @@ export default DS.Adapter.extend({
 			this.data[type.modelName] = [];
 		}
 
-		this.data[type.modelName].pushObject(data);
-
-		Ember.run.throttle(this, 'sync', null, this.syncDelay, false);
+		let exists = this.data[type.modelName].findBy('id', data.id);
 
 		return new Ember.RSVP.Promise((resolve) => {
-			resolve(data);
+			if (exists) {
+				resolve(exists);
+			} else {
+				this.data[type.modelName].pushObject(data);
+
+				Ember.run.throttle(this, 'sync', null, this.syncDelay, false);
+
+				resolve(data);
+			}
 
 			Spinner.hide();
 		});
