@@ -5,13 +5,11 @@
 
 <section class="thin">
 	{{input type="text" value=query placeholder="Search for currency"}}
-	<ul>
-	{{#each currencies as |currency|}}
+	{{#list-view tagName="ul" content=currencies as |currency|}}
 		<li class="{{if currency.selected 'selected-currency'}}" {{action 'selectCurrency' currency}}>
 			{{currency.name}} &middot; {{#if currency.symbol}}{{currency.symbol}}{{else}}{{currency.id}}{{/if}}
 		</li>
 	{{else}}
 		<li>No match.</li>
-	{{/each}}
-	</ul>
+	{{/list-view}}
 </section>
