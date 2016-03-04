@@ -364,9 +364,9 @@ ul {
 	}
 }
 
-/* Loading */
+/* Spinner */
 
-#loading {
+.spinner {
 	display: none;
 	.overlay {
 		align-items: center;
@@ -389,6 +389,7 @@ ul {
 		border: 0.125em solid #3E4EB8;
 		background: #3E4EB8;
 		border-radius: 100%;
+		display: block;
 		height: 2em;
 		overflow: hidden;
 		position: relative;

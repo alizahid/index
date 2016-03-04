@@ -1,11 +1,11 @@
 var Spinner = new function() {
-	var loading = $('#loading');
+	var spinner = $('<div class="spinner"><div class="overlay"><div class="spinner"><div class="mask">').appendTo('body');
 
 	this.show = function() {
-		loading.stop(true, true).fadeIn('fast');
+		spinner.stop(true, true).fadeIn('fast');
 	};
 
 	this.hide = function() {
-		loading.stop(true, true).fadeOut('fast');
+		spinner.stop(true, true).fadeOut('fast');
 	};
 };
