@@ -11,11 +11,12 @@ let mainWindow = null;
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
+		title: 'Index',
 		width: 480,
-		height: 800
+		height: 800,
+		resizable: false,
+		fullscreenable: false
 	});
-
-	// mainWindow.openDevTools();
 
 	mainWindow.loadURL(emberAppLocation);
 
