@@ -223,10 +223,15 @@ ul {
 				background: url('images/interface/settings.svg') center no-repeat;
 				right: 0;
 			}
+			.add {
+				background: url('images/interface/plus.svg') center no-repeat;
+				right: 0;
+			}
 			.back {
 				background: url('images/interface/back.svg') center no-repeat;
 				left: 0;
 			}
+			.add,
 			.settings,
 			.back {
 				background-size: 60%;
@@ -363,7 +368,7 @@ ul {
 		}
 	}
 }
-.accounts {
+section.accounts {
 	display: flex;
 	flex-direction: column;
 	padding: 1em !important;
@@ -378,6 +383,23 @@ ul {
 		&:active {
 			background: #EEE;
 			border-radius: 0.5em;
+		}
+	}
+}
+ul.accounts {
+	li {
+		padding: 1em 3em 1em 1em;
+		position: relative;
+		.remove {
+			background: #F7412D url('images/interface/minus.svg') center no-repeat;
+			background-size: 75%;
+			border-radius: 100%;
+			height: 1.5em;
+			margin: 0.75em;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 1.5em;
 		}
 	}
 }
