@@ -32,8 +32,6 @@ var Dialog = new function() {
 			}
 
 			content.append(input);
-		} else {
-
 		}
 
 		var buttons = $('<p>');
@@ -49,7 +47,13 @@ var Dialog = new function() {
 		dialog.append(content).wrapInner('<div class="overlay">').appendTo('body');
 
 		if (input) {
-			input.focus();
+			input.focus().on('keyup', function(e) {
+				if (e.which === 13) {
+					$('.primary', dialog).click();
+				}
+			});
+		} else {
+			$('.primary', dialog).focus();
 		}
 
 		dialog.on('click', function(e) {
