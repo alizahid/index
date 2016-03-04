@@ -36,7 +36,7 @@ label {
 	strong {
 		display: block;
 		line-height: 1.4;
-		margin: 0 0 0.6em 0;
+		margin: 0 0 0.6em;
 	}
 }
 input,
@@ -53,9 +53,9 @@ textarea,
 	padding: 0.8em;
 	width: 100%;
 	user-select: text;
-}
-::-webkit-input-placeholder {
-	color: #B4B4BA;
+	&::placeholder {
+		color: #B4B4BA;
+	}
 }
 select {
 	appearance: none;
