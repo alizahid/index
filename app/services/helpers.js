@@ -6,7 +6,7 @@ export default Ember.Service.extend({
 			if (window.cdv) {
 				navigator.notification.alert(message, null, title);
 			} else {
-				alert(message);
+				Dialog.alert(message, callback);
 			}
 		},
 		confirm(message, callback, title) {
@@ -19,11 +19,7 @@ export default Ember.Service.extend({
 					}
 				}, title, ['Yes', 'Cancel']);
 			} else {
-				var ask = confirm(message);
-
-				if (ask && typeof callback === 'function') {
-					callback();
-				}
+				Dialog.confirm(message, callback);
 			}
 		},
 		prompt(message, callback, title, buttonLabel, defaultValue) {
@@ -39,11 +35,7 @@ export default Ember.Service.extend({
 					}
 				}, title, [buttonLabel || 'Okay', 'Cancel'], defaultValue);
 			} else {
-				var data = prompt(message, defaultValue);
-
-				if (data && typeof callback === 'function') {
-					callback(data);
-				}
+				Dialog.prompt(message, callback, buttonLabel, defaultValue);
 			}
 		}
 	},
