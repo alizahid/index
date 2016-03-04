@@ -363,6 +363,24 @@ ul {
 		}
 	}
 }
+.accounts {
+	display: flex;
+	flex-direction: column;
+	padding: 1em !important;
+	figure {
+		align-items: center;
+		display: flex;
+		flex: 1;
+		h3 {
+			flex: 1;
+			text-align: center;
+		}
+		&:active {
+			background: #EEE;
+			border-radius: 0.5em;
+		}
+	}
+}
 .buttons {
 	display: flex;
 	justify-content: space-between;
