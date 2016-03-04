@@ -373,7 +373,8 @@ ul {
 
 /* Spinner */
 
-.spinner {
+.spinner,
+.migration {
 	display: none;
 	.overlay {
 		align-items: center;
@@ -447,6 +448,11 @@ ul {
 		100% {
 			opacity: 0;
 		}
+	}
+}
+.migration {
+	.overlay {
+		z-index: 10;
 	}
 }
 
