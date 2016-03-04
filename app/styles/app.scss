@@ -388,8 +388,11 @@ ul {
 		width: 100%;
 		z-index: 9;
 		span {
-			display: block;
+			display: none;
 			margin: 1em 0;
+			&:not(:empty) {
+				display: block;
+			}
 		}
 	}
 	.spinner {
