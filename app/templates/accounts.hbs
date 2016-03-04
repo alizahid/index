@@ -1,0 +1,16 @@
+<header class="thin">
+	<h1>Accounts</h1>
+	{{back-button}}
+	<a {{action 'addAccount'}} class="add"></a>
+</header>
+
+<section class="thin">
+	<ul class="accounts">
+		{{#each model as |account|}}
+			<li>
+				<span {{action 'editAccount' account}}>{{account.name}}</span>
+				<a {{action 'removeAccount' account}} class="remove"></a>
+			</li>
+		{{/each}}
+	</ul>
+</section>
