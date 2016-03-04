@@ -19,9 +19,26 @@ export default Ember.Controller.extend({
 			}, 'Edit account', 'Save', account.get('name'));
 		},
 		removeAccount(account) {
-			this.get('helpers').dialog.confirm('Are you sure?', () => {
-				account.destroyRecord();
-			}, 'Remove account')
+			if (account.id === 'default') {
+				this.get('helpers').dialog.alert('You cannot delete the default account');
+			} else {
+				this.get('helpers').dialog.confirm('Are you sure you want to remove this account? All the items in it will be moved to the default account', () => {
+					this.store.query('item', {
+						account: account.id
+					}).then((items) => {
+						if (items.get('length') > 0) {
+							this.store.findRecord('account', 'default').then((defaultAccount) => {
+								items.setEach('account', defaultAccount).save().then(() => {
+									account.destroyRecord();
+								});
+							});
+						} else {
+							account.destroyRecord();
+						}
+					});
+
+				}, 'Remove account');
+			}
 		}
 	}
 });
