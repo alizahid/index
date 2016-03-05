@@ -61,6 +61,8 @@ export default Ember.Service.extend({
 					callback(date);
 				}
 			});
+		} else {
+			DatePicker.show(date, callback);
 		}
 	},
 	openURL(url) {
