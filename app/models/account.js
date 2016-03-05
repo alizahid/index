@@ -20,5 +20,5 @@ export default DS.Model.extend({
 
 			return total;
 		}, 0);
-	})
+	}).volatile()
 });
