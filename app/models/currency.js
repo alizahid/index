@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-var Currency = DS.Model.extend({
+const Currency = DS.Model.extend({
 	name: DS.attr('string'),
 	symbol: DS.attr('string'),
 

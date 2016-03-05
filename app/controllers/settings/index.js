@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 
 			if (data.item && data.item.length > 0) {
 				dialog.prompt('Please enter your email. We will send the link here', (email) => {
-					var regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+					let regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 					if (regex.test(email)) {
 						$.ajax('https://designplox.com/index/data/?export', {
