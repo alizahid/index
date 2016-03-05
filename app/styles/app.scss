@@ -202,7 +202,7 @@ ul {
 		flex-direction: column;
 		height: 100vh;
 		position: relative;
-		header {
+		> header {
 			background: #3E4EB8;
 			padding: 1em;
 			position: relative;
@@ -245,7 +245,7 @@ ul {
 				}
 			}
 		}
-		section {
+		> section {
 			flex: 1;
 			overflow-y: scroll;
 			padding: 0 1em;
@@ -255,7 +255,7 @@ ul {
 				padding: 0;
 			}
 		}
-		footer {
+		> footer {
 			a {
 				background: #F7412D url('images/interface/minus.svg') center no-repeat;
 				background-size: 70%;
@@ -348,24 +348,39 @@ ul {
 	align-items: center;
 	flex-wrap: wrap;
 	display: flex;
-	font-size: 4vw;
 	justify-content: center;
 	padding: 1em !important;
 	figure {
-		flex: 0 0 calc(100% / 3);
+		background: #F6F6F6;
+		border-radius: 100%;
 		padding: 1em;
+		margin: 0.5em;
 		text-align: center;
 		img {
-			height: 4em;
+			height: 3em;
 		}
 		h3 {
 			color: #92989E;
 			line-height: 1.4;
 			margin-top: 1em;
 		}
+		&:hover {
+			position: relative;
+			&:before {
+				background: #999;
+				bottom: calc(100% - 1em);
+				border-radius: 1em;
+				color: #FFF;
+				content: attr(data-label);
+				font-size: 0.875em;
+				padding: 0.5em 0.65em;
+				left: 50%;
+				transform: translateX(-50%);
+				position: absolute;
+			}
+		}
 		&:active {
 			background: #EEE;
-			border-radius: 0.5em;
 		}
 	}
 }
@@ -374,20 +389,23 @@ section.accounts {
 	flex-direction: column;
 	justify-content: center;
 	padding: 1em !important;
+	h2 {
+		font-size: 1em;
+		margin: 1em 0;
+		text-align: center;
+	}
 	figure {
 		align-items: center;
+		background: #EEE;
 		display: flex;
-		flex: 0 1 5em;
+		flex: 0;
+		margin: 1em auto;
+		padding: 1em;
 		position: relative;
-		&:not(:first-child) {
-			border-top: 1px solid #EEE;
-		}
+		width: 80%;
 		h3 {
 			flex: 1;
 			text-align: center;
-		}
-		&:active {
-			background: #EEE;
 		}
 	}
 }
