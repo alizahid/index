@@ -10,27 +10,33 @@ export default Ember.Controller.extend({
 			let data = this.store.adapterFor('application').data;
 
 			if (data.item && data.item.length > 0) {
-				dialog.prompt('Please enter your email. We will send the link here.', (email) => {
-					$.ajax('https://designplox.com/index/data/?export', {
-						dataType: 'json',
-						method: 'POST',
-						data: JSON.stringify({
-							email: email,
-							data: data.item
-						}),
-						beforeSend() {
-							Spinner.show();
-						}
-					}).then((data) => {
-						dialog.alert(data.message, 'Success');
-					}, (xhr) => {
-						dialog.alert(xhr.responseJSON ? xhr.responseJSON.message : 'A server error occurred. Please try again later.', 'Error');
-					}).always(() => {
-						Spinner.hide();
-					});
+				dialog.prompt('Please enter your email. We will send the link here', (email) => {
+					var regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+					if (regex.test(email)) {
+						$.ajax('https://designplox.com/index/data/?export', {
+							dataType: 'json',
+							method: 'POST',
+							data: JSON.stringify({
+								email: email,
+								data: data.item
+							}),
+							beforeSend() {
+								Spinner.show();
+							}
+						}).then((data) => {
+							dialog.alert(data.message, 'Success');
+						}, (xhr) => {
+							dialog.alert(xhr.responseJSON ? xhr.responseJSON.message : 'A server error occurred. Please try again later', 'Error');
+						}).always(() => {
+							Spinner.hide();
+						});
+					} else {
+						dialog.alert('Invalid email', 'Export');
+					}
 				}, 'Export');
 			} else {
-				dialog.alert('You have no data to export right now.', 'Export');
+				dialog.alert('You have no data to export right now', 'Export');
 			}
 		},
 		clearData() {
@@ -42,7 +48,7 @@ export default Ember.Controller.extend({
 				store.adapterFor('application').clear();
 				store.unloadAll();
 
-				dialog.alert('All data cleared.', 'Done');
+				dialog.alert('All data cleared', 'Done');
 			}, 'Remove item');
 		},
 		rate() {
