@@ -1,20 +1,20 @@
 var Dialog = new function() {
-	jQuery.fn.destroy = function() {
+	jQuery.fn.break = function() {
 		$(this).stop(true, true).fadeOut('fast', function() {
 			$(this).remove();
 		});
 	};
 
 	this.alert = function(message, callback) {
-		show('alert', message, callback);
+		show('alert', message, callback || $.noop);
 	};
 
 	this.confirm = function(message, callback) {
-		show('confirm', message, callback);
+		show('confirm', message, callback || $.noop);
 	};
 
 	this.prompt = function(message, callback, buttonLabel, defaultValue) {
-		show('prompt', message, callback, buttonLabel, defaultValue);
+		show('prompt', message, callback || $.noop, buttonLabel, defaultValue);
 	};
 
 	var show = function(type, message, callback, buttonLabel, defaultValue) {
@@ -56,31 +56,33 @@ var Dialog = new function() {
 			$('.primary', dialog).focus();
 		}
 
+		$(document).one('keyup', function(e) {
+			if (e.which === 27) {
+				dialog.break();
+			}
+		});
+
 		dialog.on('click', function(e) {
 			e.preventDefault();
 
 			var target = $(e.target);
 
 			if (target.hasClass('primary')) {
-				if (typeof callback === 'function') {
-					if (type === 'prompt') {
-						if (input.val()) {
-							callback(input.val());
-						}
-					} else if (type === 'confirm') {
-						callback(true);
-					} else {
-						callback();
+				if (type === 'prompt') {
+					if (input.val()) {
+						callback(input.val());
 					}
+				} else {
+					callback();
 				}
 
-				dialog.destroy();
+				dialog.break();
 			} else if (target.hasClass('cancel') || target.hasClass('overlay')) {
 				if (type === 'alert') {
 					callback();
 				}
 
-				dialog.destroy();
+				dialog.break();
 			}
 		});
 	}
