@@ -219,6 +219,11 @@ ul {
 			h1 {
 				color: #FFF;
 				margin-top: 1.5em;
+				small {
+					display: block;
+					font-size: 1rem;
+					margin-bottom: 1em;
+				}
 			}
 			.settings {
 				background: url('images/interface/settings.svg') center no-repeat;
