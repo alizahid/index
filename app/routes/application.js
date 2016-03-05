@@ -11,27 +11,36 @@ export default Ember.Route.extend({
 			Migration.show('Migrating');
 
 			return new Ember.RSVP.Promise((resolve) => {
-				this.store.createRecord('account', {
-					id: 'default',
-					name: 'Default'
-				}).save().then((account) => {
-					let done = () => {
-						Ember.run.later(() => {
-							localStorage.setItem('index_version', this.version);
+				this.store.query('currency', {
+					default: true
+				}).then((currency) => {
+					this.store.createRecord('account', {
+						id: 'default',
+						name: 'Default',
+						currency: currency.get('firstObject')
+					}).save().then((account) => {
+						let done = () => {
+							Ember.run.later(() => {
+								localStorage.setItem('index_version', this.version);
 
-							resolve();
+								resolve();
 
-							Migration.hide();
-						}, this.delay);
-					};
+								Migration.hide();
+							}, this.delay);
+						};
 
-					this.store.findAll('item').then((items) => {
-						items.setEach('account', account).save();
+						this.store.findAll('item').then((items) => {
+							items.setEach('account', account).save();
 
-						done();
-					}, done);
+							done();
+						}, done);
+					});
 				});
 			});
 		}
+	},
+
+	model() {
+		return this.store.findAll('currency');
 	}
 });

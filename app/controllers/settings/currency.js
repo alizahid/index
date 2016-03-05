@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 			props: ['selected:desc', 'name:asc']
 		}).create({
 			content: data.filter((currency) => {
-				if (currency.name.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+				if (currency.get('name').toLowerCase().indexOf(query.toLowerCase()) >= 0) {
 					return true;
 				}
 			})
