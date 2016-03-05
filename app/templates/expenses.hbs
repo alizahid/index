@@ -20,14 +20,16 @@
 				<p>
 					<button type="submit">Add</button>
 				</p>
+				<p>
+					<button type="button" {{action 'startOver'}}>Start over</button>
+				</p>
 			</form>
 		</section>
 		{{else}}
 		<section class="expenses categories">
 			{{#each category.nodes as |node|}}
-			<figure {{action 'selectNode' node}}>
+			<figure data-label="{{node.name}}" {{action 'selectNode' node}}>
 				<img src="assets/images/icons/{{category.id}}-{{node.id}}.png">
-				<h3>{{node.name}}</h3>
 			</figure>
 			{{/each}}
 		</section>
@@ -35,15 +37,15 @@
 	{{else}}
 	<section class="expenses categories">
 		{{#each categories as |category|}}
-		<figure {{action 'selectCategory' category}}>
+		<figure data-label="{{category.name}}" {{action 'selectCategory' category}}>
 			<img src="assets/images/icons/{{category.id}}.png">
-			<h3>{{category.name}}</h3>
 		</figure>
 		{{/each}}
 	</section>
 	{{/if}}
 {{else}}
 <section class="accounts">
+	<h2>Select account</h2>
 	{{#each model as |account|}}
 	<figure {{action 'selectAccount' account}}>
 		<h3>{{account.name}}</h3>

@@ -118,6 +118,14 @@ export default Ember.Controller.extend({
 	}],
 
 	actions: {
+		startOver() {
+			this.setProperties({
+				account: null,
+				category: null,
+				node: null,
+				item: {}
+			});
+		},
 		selectAccount(account) {
 			this.set('account', account);
 		},
