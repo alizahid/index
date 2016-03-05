@@ -1,5 +1,10 @@
 <header>
-	<h1>{{format-currency total true}}</h1>
+	{{#tap-view content=accounts as |item|}}
+		<h1>
+			<small>{{item.name}}</small>
+			{{format-currency item.currency item.total true}}
+		</h1>
+	{{/tap-view}}
 	{{link-to null 'settings' class="settings"}}
 </header>
 
@@ -10,10 +15,9 @@
 		</figure>
 		<h3>
 			{{item.description}}
-			<small>{{moment-from-now item.time}}</small>
-			<small>{{item.account.name}}</small>
+			<small>{{moment-from-now item.time}} &#183; {{item.account.name}}</small>
 		</h3>
-		<span class="{{item.type}}">{{format-currency item.amount}}</span>
+		<span class="{{item.type}}">{{format-currency item.account.currency item.amount}}</span>
 	</div>
 {{/list-view}}
 

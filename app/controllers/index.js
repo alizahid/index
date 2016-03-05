@@ -1,16 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	total: Ember.computed('model', 'model.[]', function() {
-		return this.model.reduce(function(total, item) {
-			if (item.get('type') === 'income') {
-				total += item.get('amount');
-			} else if (item.get('type') === 'expense') {
-				total -= item.get('amount');
-			}
-
-			return total;
-		}, 0);
+	accounts: Ember.computed(function() {
+		return this.store.findAll('account');
 	}),
 
 	actions: {
