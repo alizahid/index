@@ -12,8 +12,8 @@ let mainWindow = null;
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		title: 'Index',
-		width: 480,
-		height: 800,
+		width: 420,
+		height: 680,
 		resizable: false,
 		fullscreenable: false
 	});
