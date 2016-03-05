@@ -154,6 +154,10 @@ ul {
 				}
 			}
 		}
+		&.star {
+			background: url('images/interface/star.svg') center right no-repeat;
+			background-size: contain;
+		}
 		&[data-icon] {
 			padding-left: 3.25em;
 			position: relative;
@@ -225,10 +229,6 @@ ul {
 					margin-bottom: 1em;
 				}
 			}
-			.settings {
-				background: url('images/interface/settings.svg') center no-repeat;
-				right: 0;
-			}
 			.add {
 				background: url('images/interface/plus.svg') center no-repeat;
 				right: 0;
@@ -237,9 +237,18 @@ ul {
 				background: url('images/interface/back.svg') center no-repeat;
 				left: 0;
 			}
+			.check {
+				background: url('images/interface/check.svg') center no-repeat;
+				right: 0;
+			}
+			.settings {
+				background: url('images/interface/settings.svg') center no-repeat;
+				right: 0;
+			}
 			.add,
-			.settings,
-			.back {
+			.back,
+			.check,
+			.settings {
 				background-size: 60%;
 				height: 3em;
 				position: absolute;
@@ -411,24 +420,6 @@ section.accounts {
 		h3 {
 			flex: 1;
 			text-align: center;
-		}
-	}
-}
-ul.accounts {
-	li {
-		display: flex;
-		padding: 0;
-		span {
-			flex: 1;
-			padding: 1em;
-		}
-		.remove {
-			background: #F7412D url('images/interface/minus.svg') center no-repeat;
-			background-size: 75%;
-			border-radius: 100%;
-			height: 1.5em;
-			margin: 0.75em;
-			width: 1.5em;
 		}
 	}
 }
