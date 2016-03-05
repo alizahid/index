@@ -41,8 +41,7 @@ label {
 }
 input,
 select,
-textarea,
-.input-field {
+textarea {
 	appearance: none;
 	background: #E6E6E6;
 	border: none;
@@ -601,7 +600,7 @@ section.accounts {
 		.rd-next {
 			color: #999;
 			&:hover {
-				color: #333;;
+				color: #333;
 			}
 		}
 		.rd-back {

@@ -15,7 +15,7 @@
 		</label>
 		<label>
 			<strong>Time</strong>
-			<span class="input-field" {{action 'editTime'}}>{{moment-format model.time 'LLL'}}</span>
+			<input type="text" readonly {{action 'editTime'}} value="{{moment-format model.time 'LLL'}}">
 		</label>
 		<hr>
 		<p class="buttons">
