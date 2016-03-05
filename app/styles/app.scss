@@ -124,6 +124,7 @@ p {
 ul {
 	margin: 1em 0;
 	.thin & {
+		cursor: pointer;
 		margin: 0;
 	}
 	li {
@@ -307,6 +308,7 @@ ul {
 .item {
 	border-top: 1px solid #EEE;
 	align-items: center;
+	cursor: pointer;
 	display: flex;
 	margin: 1em 0;
 	padding-top: 1em;
@@ -369,6 +371,7 @@ ul {
 	figure {
 		background: #F6F6F6;
 		border-radius: 100%;
+		cursor: pointer;
 		padding: 1em;
 		margin: 0.5em;
 		text-align: center;
