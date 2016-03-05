@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 		let version = localStorage.index_version || 0;
 
 		if (version < 2) {
-			Migration.show('Migrating');
+			Migration.show(localStorage.index ? 'Migrating' : 'Setting up');
 
 			return new Ember.RSVP.Promise((resolve) => {
 				this.store.query('currency', {
@@ -26,7 +26,7 @@ export default Ember.Route.extend({
 								resolve();
 
 								Migration.hide();
-							}, this.delay);
+							}, localStorage.index ? this.delay : 0);
 						};
 
 						this.store.findAll('item').then((items) => {
