@@ -175,6 +175,9 @@ ul {
 			&[data-icon=accounts]:after {
 				background-image: url('images/menu/accounts.png');
 			}
+			&[data-icon=cloud]:after {
+				background-image: url('images/menu/cloud.png');
+			}
 			&[data-icon=currency]:after {
 				background-image: url('images/menu/currency.png');
 			}
