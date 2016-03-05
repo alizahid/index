@@ -8,5 +8,17 @@ export default DS.Model.extend({
 
 	isDefault: Ember.computed(function() {
 		return this.id === 'default';
+	}),
+
+	total: Ember.computed(function() {
+		return this.get('items').reduce(function(total, item) {
+			if (item.get('type') === 'income') {
+				total += item.get('amount');
+			} else if (item.get('type') === 'expense') {
+				total -= item.get('amount');
+			}
+
+			return total;
+		}, 0);
 	})
 });
