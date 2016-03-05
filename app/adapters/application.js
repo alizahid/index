@@ -57,7 +57,7 @@ export default DS.Adapter.extend({
 	findRecord(store, type, id) {
 		Spinner.show();
 
-		let data = this.data[type.modelName].findBy('id', id);
+		let data = (this.data[type.modelName] || type.FIXTURES || []).findBy('id', id);
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			if (data) {
@@ -72,7 +72,7 @@ export default DS.Adapter.extend({
 	findAll(store, type) {
 		Spinner.show();
 
-		let data = this.data[type.modelName];
+		let data = this.data[type.modelName] || type.FIXTURES || [];
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			if (data) {
@@ -150,7 +150,7 @@ export default DS.Adapter.extend({
 
 		let keys = Object.keys(query);
 
-		let data = this.data[type.modelName].filter((item) => {
+		let data = (this.data[type.modelName] || type.FIXTURES || []).filter((item) => {
 			let include = true;
 
 			keys.forEach((key) => {
