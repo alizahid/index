@@ -7,8 +7,6 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
 	this.route('settings', function() {
-		this.route('currency');
-
 		this.route('about');
 	});
 
@@ -20,7 +18,13 @@ Router.map(function() {
 		path: 'edit/:id'
 	});
 
-	this.route('accounts');
+	this.route('accounts', function() {
+		this.route('add');
+
+		this.route('edit', {
+			path: 'edit/:id'
+		});
+	});
 });
 
 export default Router;

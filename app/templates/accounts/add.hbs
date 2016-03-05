@@ -1,0 +1,28 @@
+<header class="thin">
+	<h1>Add account</h1>
+	{{back-button}}
+</header>
+
+<section>
+	<form {{action 'add' on='submit'}}>
+		<label>
+			<strong>Name</strong>
+			{{input type="text" value=item.name placeholder="Example: My secret account"}}
+		</label>
+		<label>
+			<strong>Currency</strong>
+			{{input type="text" value=query placeholder="Search for the default currency for this account"}}
+			{{#if currencies}}
+				<ul>
+				{{#each currencies as |currency|}}
+					<li {{action 'selectCurrency' currency}}>{{currency.name}} &#183; {{currency.print}}</li>
+				{{/each}}
+				</ul>
+			{{/if}}
+		</label>
+		<hr>
+		<p>
+			<button type="submit">Add</button>
+		</p>
+	</form>
+</section>

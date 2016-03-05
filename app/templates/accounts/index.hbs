@@ -1,0 +1,15 @@
+<header class="thin">
+	<h1>Accounts</h1>
+	{{back-button}}
+	{{link-to null 'accounts.add' class="add"}}
+</header>
+
+<section class="thin">
+	<ul>
+		{{#each model as |account|}}
+			{{#link-to 'accounts.edit' account tagName="li" classBinding="account.isDefault:star"}}
+				{{account.name}} &#183; {{account.currency.print}}
+			{{/link-to}}
+		{{/each}}
+	</ul>
+</section>

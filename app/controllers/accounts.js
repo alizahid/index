@@ -3,37 +3,69 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	helpers: Ember.inject.service('helpers'),
 
-	actions: {
-		addAccount() {
-			this.get('helpers').dialog.prompt('Enter a name for the new account', (name) => {
-				this.store.createRecord('account', {
-					name: name
-				}).save();
-			}, 'New account', 'Add');
-		},
-		editAccount(account) {
-			this.get('helpers').dialog.prompt('Change account name', (name) => {
-				account.set('name', name);
+	queryChanged: Ember.observer('query', function() {
+		if (this.query && this.query.length > 1) {
+			var currencies = Ember.ArrayProxy.extend({
+				arrangedContent: Ember.computed.sort('content', 'props'),
+				props: ['name:asc']
+			}).create({
+				content: this.store.peekAll('currency').filter((currency) => {
+					if (currency.get('name').toLowerCase().indexOf(this.query.toLowerCase()) >= 0) {
+						return true;
+					}
+				}).splice(0, 4)
+			});
+		}
 
-				account.save();
-			}, 'Edit account', 'Save', account.get('name'));
+		this.set('currencies', currencies || null);
+	}),
+
+	actions: {
+		selectCurrency(currency) {
+			this.set('query', currency.get('name'));
+
+			if (this.item) {
+				this.set('item.currency', currency);
+			} else {
+				this.set('model.currency', currency);
+			}
+
+			Ember.run.next(() => {
+				this.set('currencies', null);
+			});
 		},
-		removeAccount(account) {
-			if (account.id === 'default') {
+		add() {
+			if (this.item.name && this.item.currency) {
+				this.store.createRecord('account', this.item).save().then(() => {
+					window.history.back();
+				});
+			}
+		},
+		edit() {
+			this.model.save().then(() => {
+				window.history.back();
+			});
+		},
+		remove() {
+			if (this.model.get('id') === 'default') {
 				this.get('helpers').dialog.alert('You cannot delete the default account');
 			} else {
 				this.get('helpers').dialog.confirm('Are you sure you? Data will be merged with the default account', () => {
 					this.store.query('item', {
-						account: account.id
+						account: this.model.get('id')
 					}).then((items) => {
 						if (items.get('length') > 0) {
 							this.store.findRecord('account', 'default').then((defaultAccount) => {
 								items.setEach('account', defaultAccount).save().then(() => {
-									account.destroyRecord();
+									this.model.destroyRecord().then(() => {
+										window.history.back();
+									});
 								});
 							});
 						} else {
-							account.destroyRecord();
+							this.model.destroyRecord().then(() => {
+								window.history.back();
+							});
 						}
 					});
 
