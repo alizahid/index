@@ -28,6 +28,7 @@ a {
 	color: #3E4EB8;
 	cursor: pointer;
 	text-decoration: none;
+	transition: all 300ms ease;
 }
 form {}
 label {
@@ -74,6 +75,7 @@ button {
 	font: inherit;
 	line-height: 1;
 	padding: 1em;
+	transition: all 300ms ease;
 	width: 100%;
 	&:active {
 		color: #B8BCC0;
@@ -232,33 +234,38 @@ ul {
 					margin-bottom: 1em;
 				}
 			}
-			.add {
-				background: url('images/interface/plus.svg') center no-repeat;
-				right: 0;
-			}
-			.back {
-				background: url('images/interface/back.svg') center no-repeat;
-				left: 0;
-			}
-			.check {
-				background: url('images/interface/check.svg') center no-repeat;
-				right: 0;
-			}
-			.settings {
-				background: url('images/interface/settings.svg') center no-repeat;
-				right: 0;
-			}
-			.add,
-			.back,
-			.check,
-			.settings {
-				background-size: 60%;
-				height: 3em;
-				position: absolute;
-				top: 0;
-				width: 3em;
-				&:active {
-					background-color: rgba(255, 255, 255, 0.1);
+			a {
+				transition: none;
+				&.add,
+				&.back,
+				&.check,
+				&.settings {
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: 60%;
+					height: 3em;
+					position: absolute;
+					top: 0;
+					width: 3em;
+					&:active {
+						background-color: rgba(255, 255, 255, 0.1);
+					}
+				}
+				&.add {
+					background-image: url('images/interface/plus.svg');
+					right: 0;
+				}
+				&.back {
+					background-image: url('images/interface/back.svg');
+					left: 0;
+				}
+				&.check {
+					background-image: url('images/interface/check.svg');
+					right: 0;
+				}
+				&.settings {
+					background-image: url('images/interface/settings.svg');
+					right: 0;
 				}
 			}
 		}
@@ -433,6 +440,16 @@ section.accounts {
 	justify-content: space-between;
 	button {
 		flex: 0 0 calc(50% - 1em);
+	}
+}
+.button-links {
+	color: #999;
+	text-align: center;
+	a {
+		color: #92989E;
+		&:hover {
+			color: #B8BCC0;
+		}
 	}
 }
 
