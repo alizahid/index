@@ -1,16 +1,36 @@
+import ENV from 'index/config/environment';
+
 import Ember from 'ember';
 
+const isMobile = () => {
+	return ENV.APP.environment === 'mobile';
+};
+
+const isWeb = () => {
+	return ENV.APP.environment === 'web';
+};
+
+const isApp = () => {
+	return ENV.APP.environment === 'app';
+};
+
 export default Ember.Service.extend({
+	env: {
+		mobile: isMobile(),
+		web: isWeb(),
+		app: isApp()
+	},
+
 	dialog: {
 		alert(message, title, callback) {
-			if (window.cdv) {
+			if (isMobile()) {
 				navigator.notification.alert(message, null, title);
 			} else {
 				Dialog.alert(message, callback);
 			}
 		},
 		confirm(message, callback, title) {
-			if (window.cdv) {
+			if (isMobile()) {
 				navigator.notification.confirm(message, (button) => {
 					if (button === 1) {
 						if (typeof callback === 'function') {
@@ -23,7 +43,7 @@ export default Ember.Service.extend({
 			}
 		},
 		prompt(message, callback, title, buttonLabel, defaultValue) {
-			if (window.cdv) {
+			if (isMobile()) {
 				navigator.notification.prompt(message, (response) => {
 					let button = response.buttonIndex,
 						data = response.input1;
@@ -41,18 +61,18 @@ export default Ember.Service.extend({
 	},
 	social: {
 		share(message, title, link) {
-			if (window.cdv) {
+			if (isMobile()) {
 				window.plugins.socialsharing.share(message, title, null, link);
 			}
 		},
 		rate() {
-			if (window.cdv) {
+			if (isMobile()) {
 				AppRate.promptForRating(true);
 			}
 		}
 	},
 	datePicker(date, callback, mode) {
-		if (window.cdv) {
+		if (isMobile()) {
 			datePicker.show({
 				date: date,
 				mode: mode || 'datetime'
@@ -66,7 +86,7 @@ export default Ember.Service.extend({
 		}
 	},
 	openURL(url) {
-		if (window.cdv) {
+		if (isMobile()) {
 			cordova.InAppBrowser.open(url + '?utm_medium=referral&utm_source=index', '_system');
 		}
 	}

@@ -2,7 +2,7 @@
 
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function(environment, appEnv) {
 	let ENV = {
 		modulePrefix: 'index',
 		environment: environment,
@@ -11,7 +11,9 @@ module.exports = function(environment) {
 			FEATURES: {}
 		},
 
-		APP: {},
+		APP: {
+			environment: appEnv || 'web'
+		},
 
 		contentSecurityPolicyMeta: true,
 		contentSecurityPolicy: {

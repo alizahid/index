@@ -1,7 +1,9 @@
-export function initialize(app) {
-	app.deferReadiness();
+import ENV from 'index/config/environment';
 
-	if (window.cdv) {
+export function initialize(app) {
+	if (ENV.APP.environment === 'mobile') {
+		app.deferReadiness();
+
 		document.addEventListener('deviceready', function() {
 			AppRate.preferences.storeAppURL.ios = '1078789240';
 			AppRate.preferences.storeAppURL.android = 'market://details?id=io.index';
@@ -16,8 +18,6 @@ export function initialize(app) {
 
 			app.advanceReadiness();
 		}, false);
-	} else {
-		app.advanceReadiness();
 	}
 }
 
