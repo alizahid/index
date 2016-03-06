@@ -45,10 +45,24 @@ export default Ember.Controller.extend({
 			let store = this.store;
 
 			dialog.confirm('Are you sure?', () => {
+				Spinner.show();
+
 				store.adapterFor('application').clear();
 				store.unloadAll();
 
-				dialog.alert('All data cleared', 'Done');
+				this.store.query('currency', {
+					default: true
+				}).then((currency) => {
+					this.store.createRecord('account', {
+						id: 'default',
+						name: 'Default',
+						currency: currency.get('firstObject')
+					}).save().then(() => {
+						Spinner.hide();
+
+						window.history.back();
+					});
+				});
 			}, 'Remove item');
 		},
 		rate() {
