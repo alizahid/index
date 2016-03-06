@@ -163,7 +163,11 @@ export default DS.Adapter.extend({
 		});
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
-			resolve(data);
+			if (data) {
+				resolve(data);
+			} else {
+				reject();
+			}
 
 			Spinner.hide();
 		});

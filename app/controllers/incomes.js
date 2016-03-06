@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		startOver() {
-			controller.setProperties({
+			this.setProperties({
 				account: null,
 				category: null,
 				item: {}

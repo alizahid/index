@@ -9,11 +9,8 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = (defaults) => {
 	let app = new EmberApp(defaults, {
 		storeConfigInMeta: false,
-		fingerprint: {
-			enabled: false
-		},
 		autoprefixer: {
-			browsers: ['android >= 1, ios_saf >= 1, and_chr >= 1']
+			browsers: ['> 1%']
 		}
 	});
 

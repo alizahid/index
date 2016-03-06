@@ -4,8 +4,10 @@ export default Ember.Controller.extend({
 	helpers: Ember.inject.service('helpers'),
 
 	queryChanged: Ember.observer('query', function() {
+		let currencies = null;
+
 		if (this.query && this.query.length > 1) {
-			var currencies = Ember.ArrayProxy.extend({
+			currencies = Ember.ArrayProxy.extend({
 				arrangedContent: Ember.computed.sort('content', 'props'),
 				props: ['name:asc']
 			}).create({
@@ -17,7 +19,7 @@ export default Ember.Controller.extend({
 			});
 		}
 
-		this.set('currencies', currencies || null);
+		this.set('currencies', currencies);
 	}),
 
 	actions: {
