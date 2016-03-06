@@ -380,6 +380,7 @@ ul {
 		border-radius: 100%;
 		cursor: pointer;
 		padding: 1em;
+		position: relative;
 		margin: 0.5em;
 		text-align: center;
 		img {
@@ -390,22 +391,34 @@ ul {
 			line-height: 1.4;
 			margin-top: 1em;
 		}
-		&:hover {
-			position: relative;
-			&:before {
-				background: #999;
-				bottom: calc(100% - 1em);
-				border-radius: 1em;
-				color: #FFF;
-				content: attr(data-label);
-				font-size: 0.875em;
-				padding: 0.5em 0.65em;
-				left: 50%;
-				transform: translateX(-50%);
-				position: absolute;
+		&:before {
+			background: #999;
+			bottom: calc(100% - 1em);
+			border-radius: 1em;
+			color: #FFF;
+			content: attr(data-label);
+			display: none;
+			font-size: 0.875em;
+			opacity: 0.75;
+			padding: 0.5em 0.65em;
+			left: 50%;
+			transform: translateX(-50%);
+			position: absolute;
+			.mobile & {
+				display: block;
 			}
 		}
-		&:active {
+		.web &:hover,
+		.app &:hover {
+			&:before {
+				display: block;
+			}
+		}
+		.mobile &:active {
+			background: #EEE;
+		}
+		.web &:hover,
+		.app &:hover {
 			background: #EEE;
 		}
 	}
@@ -447,7 +460,11 @@ section.accounts {
 	text-align: center;
 	a {
 		color: #92989E;
-		&:hover {
+		.mobile &:active {
+			color: #B8BCC0;
+		}
+		.web &:hover,
+		.app &:hover {
 			color: #B8BCC0;
 		}
 	}
@@ -622,7 +639,11 @@ section.accounts {
 		.rd-back,
 		.rd-next {
 			color: #999;
-			&:hover {
+			.mobile &:active {
+				color: #333;
+			}
+			.web &:hover,
+			.app &:hover {
 				color: #333;
 			}
 		}
