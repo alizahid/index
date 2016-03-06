@@ -1,7 +1,14 @@
+import ENV from 'index/config/environment';
+
 import Ember from 'ember';
+
 import moment from 'moment';
 
 export function initialize() {
+	Ember.LinkComponent.reopen({
+		attributeBindings: ['data-icon']
+	});
+
 	Ember.TextField.reopen({
 		didInsertElement() {
 			Ember.run.next(this, () => {
@@ -20,10 +27,18 @@ export function initialize() {
 			}
 		})
 	});
+
+	Ember.Route.reopen({
+		beforeModel() {
+			if (ENV.APP.environment === 'web' && !localStorage.index_isLoggedIn && this.routeName !== 'login') {
+				this.replaceWith('login');
+			}
+		}
+	});
 }
 
 export default {
-	name: 'reopen-textfield',
+	name: 'reopen',
 	after: 'cordova',
 	initialize
 };
