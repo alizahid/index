@@ -9,6 +9,8 @@
     "AppRate",
     "Scroll",
     "Spinner",
+    "Migration",
+    "DatePicker",
     "Dialog",
     "shortid"
   ],
