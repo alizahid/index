@@ -30,7 +30,7 @@ export function initialize() {
 
 	Ember.Route.reopen({
 		beforeModel() {
-			if (ENV.APP.environment === 'web' && !localStorage.index_isLoggedIn && this.routeName !== 'login') {
+			if (ENV.APP.environment === 'web' && !localStorage.index_isLoggedIn && ['login', 'sign-up', 'forgot-password'].indexOf(this.routeName) < 0) {
 				this.replaceWith('login');
 			}
 		}
