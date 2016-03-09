@@ -15,7 +15,6 @@ export default DS.Adapter.extend({
 		}
 	},
 
-	syncDelay: 0,
 	sync() {
 		localStorage.setItem(this.namespace, JSON.stringify(this.data));
 	},
@@ -45,7 +44,7 @@ export default DS.Adapter.extend({
 			} else {
 				this.data[type.modelName].pushObject(data);
 
-				Ember.run.throttle(this, 'sync', null, this.syncDelay, false);
+				this.sync();
 
 				resolve(data);
 			}
@@ -106,7 +105,7 @@ export default DS.Adapter.extend({
 			if (index >= 0) {
 				adapter.data[type.modelName][index] = data;
 
-				Ember.run.throttle(adapter, 'sync', null, adapter.syncDelay, false);
+				this.sync();
 
 				resolve(data);
 			} else {
@@ -134,7 +133,7 @@ export default DS.Adapter.extend({
 			if (index >= 0) {
 				adapter.data[type.modelName].splice(index, 1);
 
-				Ember.run.throttle(adapter, 'sync', null, adapter.syncDelay, false);
+				this.sync();
 
 				resolve();
 			} else {
