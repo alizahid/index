@@ -25,6 +25,14 @@ Router.map(function() {
 			path: 'edit/:id'
 		});
 	});
+
+	this.route('cloud');
+
+	this.route('login');
+
+	this.route('sign-up');
+
+	this.route('forgot-password');
 });
 
 export default Router;
