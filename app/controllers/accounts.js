@@ -50,7 +50,7 @@ export default Ember.Controller.extend({
 		},
 		remove() {
 			if (this.model.get('id') === 'default') {
-				this.get('helpers').dialog.alert('You cannot delete the default account');
+				this.get('helpers').dialog.alert('You cannot remove the default account');
 			} else {
 				this.get('helpers').dialog.confirm('Are you sure you? Data will be merged with the default account', () => {
 					this.store.query('item', {

@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 				});
 			}
 		},
-		delete() {
+		remove() {
 			let model = this.model;
 
 			this.get('helpers').dialog.confirm('Are you sure?', () => {
