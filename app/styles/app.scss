@@ -181,20 +181,13 @@ ul {
 		&:first-of-type {
 			border: none;
 		}
-		&:active {
-			position: relative;
-			&[data-ember-action],
-			&.ember-view {
-				&:before {
-					background: #EEE;
-					content: '';
-					height: 100%;
-					left: 0;
-					position: absolute;
-					top: 0;
-					width: 100%;
-					z-index: -1;
-				}
+		&[data-ember-action],
+		&.ember-view {
+			cursor: pointer;
+			.mobile &:active,
+			.web &:hover,
+			.app &:hover {
+				background: #EEE;
 			}
 		}
 		&.star {
