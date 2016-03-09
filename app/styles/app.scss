@@ -34,9 +34,24 @@ a {
 		color: #FFF;
 		display: inline-block;
 		line-height: 1;
-		padding: 0.8em;
+		padding: 0.8em 1em;
+		& + .hero {
+			margin-left: calc(1em - 4px);
+		}
 		&:active {
 			background: #B8BCC0;
+		}
+		&.primary {
+			background: #47B04B;
+			&:active {
+				background: #61CA65;
+			}
+		}
+		&.red {
+			background: #F7412D;
+			&:active {
+				background: #FF5B47;
+			}
 		}
 	}
 }
@@ -440,9 +455,7 @@ ul {
 				display: block;
 			}
 		}
-		.mobile &:active {
-			background: #EEE;
-		}
+		.mobile &:active,
 		.web &:hover,
 		.app &:hover {
 			background: #EEE;
@@ -620,11 +633,24 @@ section.accounts {
 				text-align: right;
 			}
 			button {
+				background: #92989E;
+				border: none;
+				color: #FFF;
+				cursor: pointer;
 				font-size: 0.9375em;
 				padding: 0.65em 1em;
 				width: auto;
 				&:not(:first-child) {
 					margin-left: 1em;
+				}
+				&:active {
+					background: #B8BCC0;
+				}
+				&.primary {
+					background: #47B04B;
+					&:active {
+						background: #61CA65;
+					}
 				}
 			}
 		}
@@ -667,9 +693,7 @@ section.accounts {
 		.rd-back,
 		.rd-next {
 			color: #999;
-			.mobile &:active {
-				color: #333;
-			}
+			.mobile &:active,
 			.web &:hover,
 			.app &:hover {
 				color: #333;
