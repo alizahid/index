@@ -40,70 +40,86 @@ a {
 		}
 	}
 }
-form {}
-label {
-	display: block;
-	margin: 1em 0;
-	strong {
+form {
+	label {
 		display: block;
+		margin: 1em 0;
+		strong {
+			display: block;
+			line-height: 1.4;
+			margin: 0 0 0.6em;
+		}
+	}
+	input,
+	select,
+	textarea {
+		appearance: none;
+		background: #E6E6E6;
+		border: none;
+		color: #000;
+		display: block;
+		font: inherit;
+		line-height: normal;
+		padding: 0.8em;
+		width: 100%;
+		user-select: text;
+		&::placeholder {
+			color: #B4B4BA;
+		}
+	}
+	select {
+		appearance: none;
+		background: #E6E6E6 url('images/select-bg.svg') center right no-repeat;
+		background-size: auto 100%;
+		padding: 0.8em 2.6em 0.8em 0.8em;
+	}
+	textarea {
 		line-height: 1.4;
-		margin: 0 0 0.6em;
+		min-height: 6em;
 	}
-}
-input,
-select,
-textarea {
-	appearance: none;
-	background: #E6E6E6;
-	border: none;
-	color: #000;
-	display: block;
-	font: inherit;
-	line-height: normal;
-	padding: 0.8em;
-	width: 100%;
-	user-select: text;
-	&::placeholder {
-		color: #B4B4BA;
+	button {
+		background: #92989E;
+		border: none;
+		cursor: pointer;
+		color: #FFF;
+		font: inherit;
+		line-height: 1;
+		padding: 1em;
+		transition: all 300ms ease;
+		width: 100%;
+		&:active {
+			color: #B8BCC0;
+		}
+		&[type=submit],
+		&.primary {
+			background: #47B04B;
+			color: #FFF;
+			&:active {
+				background: #61CA65;
+			}
+		}
+		&.red {
+			background: #F7412D;
+			color: #FFF;
+			&:active {
+				background: #FF5B47;
+			}
+		}
 	}
-}
-select {
-	appearance: none;
-	background: #E6E6E6 url('images/select-bg.svg') center right no-repeat;
-	background-size: auto 100%;
-	padding: 0.8em 2.6em 0.8em 0.8em;
-}
-textarea {
-	line-height: 1.4;
-	min-height: 6em;
-}
-button {
-	background: #92989E;
-	border: none;
-	cursor: pointer;
-	color: #FFF;
-	font: inherit;
-	line-height: 1;
-	padding: 1em;
-	transition: all 300ms ease;
-	width: 100%;
-	&:active {
-		color: #B8BCC0;
+	p.success,
+	p.error {
+		color: #FFF;
+		line-height: 1;
+		padding: 1em;
+		&:empty {
+			display: none;
+		}
 	}
-	&[type=submit],
-	&.primary {
+	p.success {
 		background: #47B04B;
-		color: #FFF;
-		&:active {
-			background: #61CA65;
-		}
 	}
-	&.red {
+	p.error {
 		background: #F7412D;
-		color: #FFF;
-		&:active {
-			background: #FF5B47;
-		}
 	}
 }
 h1,
