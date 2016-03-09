@@ -32,6 +32,8 @@ module.exports = function(environment, appEnv) {
 
 		ENV.contentSecurityPolicy['connect-src'].push('http://localhost:30820');
 		ENV.contentSecurityPolicy['connect-src'].push('ws://localhost:30820');
+
+		ENV.contentSecurityPolicy['connect-src'].push('http://localhost');
 	}
 
 	if (environment === 'test') {
