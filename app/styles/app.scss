@@ -184,9 +184,7 @@ ul {
 		&[data-ember-action],
 		&.ember-view {
 			cursor: pointer;
-			.mobile &:active,
-			.web &:hover,
-			.app &:hover {
+			&:active {
 				background: #EEE;
 			}
 		}
