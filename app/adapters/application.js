@@ -93,7 +93,7 @@ export default DS.Adapter.extend({
 			includeId: true
 		});
 
-		let index = adapter.data[type.modelName].reduce((value, record, index) => {
+		let index = (adapter.data[type.modelName] || []).reduce((value, record, index) => {
 			if (record.id === data.id) {
 				value = index;
 			}
@@ -102,6 +102,10 @@ export default DS.Adapter.extend({
 		}, null);
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
+			if (index === null) {
+				return reject();
+			}
+
 			if (index >= 0) {
 				adapter.data[type.modelName][index] = data;
 
