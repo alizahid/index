@@ -9,7 +9,10 @@ export default Ember.Route.extend({
 	setupController(controller, model) {
 		this._super(...arguments);
 
-		controller.set('query', model.get('currency').get('name'));
+		controller.setProperties({
+			query: model.get('currency').get('name'),
+			total: model.get('total')
+		});
 
 		Ember.run.next(() => {
 			controller.set('currencies', null);

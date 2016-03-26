@@ -21,6 +21,12 @@
 			{{/if}}
 		</label>
 		<hr>
+		<label>
+			<strong>Adjustment</strong>
+			{{input type="number" step="any" required=true pattern="^\d+\.\d{2}$" value=total placeholder="Adjusted account balance"}}
+			<p>If this account is out of sync, enter the new balance and Index will make the adjustment</p>
+		</label>
+		<hr>
 		<p class="buttons">
 			<button type="submit">Save</button>
 			<button type="button" class="red" {{action 'remove'}}>Remove</button>

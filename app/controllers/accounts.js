@@ -44,9 +44,34 @@ export default Ember.Controller.extend({
 			}
 		},
 		edit() {
-			this.model.save().then(() => {
-				window.history.back();
-			});
+			let balance = parseFloat(this.model.get('total')),
+				newBalance = parseFloat(this.total);
+
+			if (balance === newBalance) {
+				this.model.save().then(() => {
+					window.history.back();
+				});
+			} else {
+				let type;
+
+				if (balance > newBalance) {
+					type = 'expense';
+				} else {
+					type = 'income';
+				}
+
+				this.store.createRecord('item', {
+					account: this.model,
+					type: type,
+					category: 'adjustment',
+					description: 'Adjustment',
+					amount: Math.abs(balance - newBalance)
+				}).save().then(() => {
+					this.model.save().then(() => {
+						window.history.back();
+					});
+				});
+			}
 		},
 		remove() {
 			if (this.model.get('id') === 'default') {
