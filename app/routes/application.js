@@ -14,11 +14,7 @@ export default Ember.Route.extend({
 				this.store.query('currency', {
 					default: true
 				}).then((currency) => {
-					this.store.createRecord('account', {
-						id: 'default',
-						name: 'Default',
-						currency: currency.get('firstObject')
-					}).save().then((account) => {
+					this.store.findRecord('account', 'default').then((account) => {
 						let done = () => {
 							Ember.run.later(() => {
 								localStorage.setItem('index_version', this.version);

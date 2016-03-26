@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.Model.extend({
+const Account = DS.Model.extend({
 	name: DS.attr('string'),
 	items: DS.hasMany('item'),
 	currency: DS.belongsTo('currency'),
@@ -22,3 +22,13 @@ export default DS.Model.extend({
 		}, 0);
 	}).volatile()
 });
+
+Account.reopenClass({
+	FIXTURES: [{
+		id: 'default',
+		name: 'Default',
+		currency: 'USD'
+	}]
+});
+
+export default Account;
