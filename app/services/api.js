@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Service.extend({
-	URI: 'http://localhost:3000/api',
+const API_URI = 'http://localhost:3000/api';
 
+export default Ember.Service.extend({
 	loggedIn() {
 		return typeof localStorage.index_token !== 'undefined';
 	},
@@ -13,7 +13,7 @@ export default Ember.Service.extend({
 	login(email, password) {
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			$.ajax({
-				url: this.URI + '/login',
+				url: API_URI + '/login',
 				method: 'POST',
 				data: {
 					email: email,
@@ -42,7 +42,7 @@ export default Ember.Service.extend({
 	signUp(name, email, password) {
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			$.ajax({
-				url: this.URI + '/sign-up',
+				url: API_URI + '/sign-up',
 				method: 'POST',
 				data: {
 					name: name,
@@ -65,7 +65,7 @@ export default Ember.Service.extend({
 	resetPassword(email) {
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			$.ajax({
-				url: this.URI + '/reset-password',
+				url: API_URI + '/reset-password',
 				method: 'POST',
 				data: {
 					email: email
@@ -85,7 +85,7 @@ export default Ember.Service.extend({
 	sync(data) {
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			$.ajax({
-				url: this.URI + '/sync',
+				url: API_URI + '/sync',
 				method: 'POST',
 				data: data
 			}).then((data) => {
