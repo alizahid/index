@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 	setupController(controller, model) {
 		this._super(...arguments);
 
-		var onlyOne = model.get('length') === 1;
+		let onlyOne = model.get('length') === 1;
 
 		controller.setProperties({
 			account: onlyOne ? model.get('firstObject') : null,

@@ -19,7 +19,7 @@ export default Ember.Route.extend({
 
 	actions: {
 		login() {
-			var controller = this.get('controller');
+			let controller = this.get('controller');
 
 			if (controller.email && controller.password) {
 				controller.set('error', null);
