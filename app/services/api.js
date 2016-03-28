@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-	URI: 'http://localhost/index/api',
+	URI: 'http://localhost:3000/api',
 
 	loggedIn() {
 		return typeof localStorage.index_token !== 'undefined';
@@ -70,6 +70,24 @@ export default Ember.Service.extend({
 				data: {
 					email: email
 				}
+			}).then((data) => {
+				if (data.message) {
+					resolve(data.message);
+				} else {
+					reject('An error occurred');
+				}
+			}, (xhr) => {
+				reject(xhr.responseJSON && xhr.responseJSON.error || 'An error occurred');
+			});
+		});
+	},
+
+	sync(data) {
+		return new Ember.RSVP.Promise((resolve, reject) => {
+			$.ajax({
+				url: this.URI + '/sync',
+				method: 'POST',
+				data: data
 			}).then((data) => {
 				if (data.message) {
 					resolve(data.message);
