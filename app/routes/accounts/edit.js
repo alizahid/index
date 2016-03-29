@@ -17,5 +17,9 @@ export default Ember.Route.extend({
 		Ember.run.next(() => {
 			controller.set('currencies', null);
 		});
+	},
+
+	deactivate() {
+		this.get('controller').model.rollbackAttributes();
 	}
 });
