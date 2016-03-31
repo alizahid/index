@@ -610,7 +610,11 @@ section.accounts {
 		width: 80%;
 		input {
 			background: #FFF;
+			border: none;
+			font: inherit;
 			margin: 1em 0;
+			padding: 1em;
+			width: 100%;
 		}
 		p {
 			margin: 0;
