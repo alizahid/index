@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 					let regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 					if (regex.test(email)) {
-						$.ajax('https://designplox.com/index/data/?export', {
+						Ember.$.ajax('https://designplox.com/index/data/?export', {
 							dataType: 'json',
 							method: 'POST',
 							data: JSON.stringify({

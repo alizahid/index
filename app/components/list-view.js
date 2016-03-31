@@ -6,7 +6,7 @@ export default Ember.Component.extend({
 	items: 5,
 	delay: 250,
 	threshold: Ember.computed(() => {
-		return $(window).height() / 3;
+		return Ember.$(window).height() / 3;
 	}),
 
 	init() {

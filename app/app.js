@@ -12,7 +12,7 @@ App = Ember.Application.extend({
 	podModulePrefix: config.podModulePrefix,
 	Resolver,
 	ready() {
-		$('body').addClass(config.APP.environment).removeClass('loading');
+		Ember.$('body').addClass(config.APP.environment).removeClass('loading');
 	}
 });
 
