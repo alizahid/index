@@ -12,7 +12,8 @@ module.exports = function(environment, appEnv) {
 		},
 
 		APP: {
-			environment: appEnv || 'web'
+			environment: appEnv || 'web',
+			API_URI: 'https://designplox.com/index/api'
 		},
 
 		contentSecurityPolicyMeta: true,
@@ -28,6 +29,8 @@ module.exports = function(environment, appEnv) {
 	};
 
 	if (environment === 'development') {
+		ENV.APP.API_URI = 'http://localhost/index/api';
+
 		ENV.contentSecurityPolicy['script-src'].push('http://localhost:30820');
 
 		ENV.contentSecurityPolicy['connect-src'].push('http://localhost:30820');
