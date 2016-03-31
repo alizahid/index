@@ -1,6 +1,6 @@
 *,
-*:before,
-*:after {
+*:after,
+*:before {
 	box-sizing: border-box;
 	border-radius: 0;
 	font-weight: 300;
@@ -105,8 +105,8 @@ form {
 		&:active {
 			color: #B8BCC0;
 		}
-		&[type=submit],
-		&.primary {
+		&.primary,
+		&[type=submit] {
 			background: #47B04B;
 			color: #FFF;
 			&:active {
@@ -121,8 +121,8 @@ form {
 			}
 		}
 	}
-	p.success,
-	p.error {
+	p.error,
+	p.success {
 		color: #FFF;
 		line-height: 1;
 		padding: 1em;
@@ -181,8 +181,8 @@ ul {
 		&:first-of-type {
 			border: none;
 		}
-		&[data-ember-action],
-		&.ember-view {
+		&.ember-view,
+		&[data-ember-action] {
 			cursor: pointer;
 			&:active {
 				background-color: #EEE;
@@ -440,15 +440,15 @@ ul {
 				display: block;
 			}
 		}
-		.web &:hover,
-		.app &:hover {
+		.app &:hover,
+		.web &:hover {
 			&:before {
 				display: block;
 			}
 		}
+		.app &:hover,
 		.mobile &:active,
-		.web &:hover,
-		.app &:hover {
+		.web &:hover {
 			background: #EEE;
 		}
 	}
@@ -504,8 +504,8 @@ section.accounts {
 
 /* Spinner */
 
-.spinner,
-.migration {
+.migration,
+.spinner {
 	display: none;
 	.overlay {
 		align-items: center;
@@ -536,8 +536,8 @@ section.accounts {
 		overflow: hidden;
 		position: relative;
 		width: 2em;
-		&:before,
 		&:after,
+		&:before,
 		.mask {
 			border-radius: 2em 0 0 2em;
 			content: '';
@@ -575,8 +575,8 @@ section.accounts {
 		0% {
 			opacity: 1;
 		}
-		50%,
-		100% {
+		100%,
+		50% {
 			opacity: 0;
 		}
 	}
@@ -680,17 +680,17 @@ section.accounts {
 			border-collapse: collapse;
 			border-spacing: 0;
 			width: 100%;
-			th,
-			td {
+			td,
+			th {
 				padding: 0.75em 0;
 			}
 		}
 		.rd-back,
 		.rd-next {
 			color: #999;
+			.app &:hover,
 			.mobile &:active,
-			.web &:hover,
-			.app &:hover {
+			.web &:hover {
 				color: #333;
 			}
 		}
