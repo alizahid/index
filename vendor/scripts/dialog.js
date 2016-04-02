@@ -13,11 +13,11 @@ var Dialog = new function() {
 		show('confirm', message, callback || $.noop);
 	};
 
-	this.prompt = function(message, callback, buttonLabel, defaultValue) {
-		show('prompt', message, callback || $.noop, buttonLabel, defaultValue);
+	this.prompt = function(message, callback, buttonLabel, defaultValue, placeholder) {
+		show('prompt', message, callback || $.noop, buttonLabel, defaultValue, placeholder);
 	};
 
-	var show = function(type, message, callback, buttonLabel, defaultValue) {
+	var show = function(type, message, callback, buttonLabel, defaultValue, placeholder) {
 		var dialog = $('<div class="dialog">');
 
 		var content = $('<div class="content">');
@@ -26,6 +26,10 @@ var Dialog = new function() {
 
 		if (type === 'prompt') {
 			var input = $('<input>').prop('type', 'text');
+
+			if (placeholder) {
+				input.prop('placeholder', placeholder);
+			}
 
 			if (defaultValue) {
 				input.val(defaultValue);

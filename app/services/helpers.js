@@ -42,7 +42,7 @@ export default Ember.Service.extend({
 				Dialog.confirm(message, callback);
 			}
 		},
-		prompt(message, callback, title, buttonLabel, defaultValue) {
+		prompt(message, callback, title, buttonLabel, defaultValue, placeholder) {
 			if (isMobile()) {
 				navigator.notification.prompt(message, (response) => {
 					let button = response.buttonIndex,
@@ -55,7 +55,7 @@ export default Ember.Service.extend({
 					}
 				}, title, [buttonLabel || 'Okay', 'Cancel'], defaultValue);
 			} else {
-				Dialog.prompt(message, callback, buttonLabel, defaultValue);
+				Dialog.prompt(message, callback, buttonLabel, defaultValue, placeholder);
 			}
 		}
 	},
