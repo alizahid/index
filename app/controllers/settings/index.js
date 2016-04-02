@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
 					} else {
 						dialog.alert('Invalid email', 'Export');
 					}
-				}, 'Export');
+				}, 'Export', null, null, 'Email');
 			} else {
 				dialog.alert('You have no data to export right now', 'Export');
 			}
