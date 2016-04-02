@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	version: 2,
-	delay: 2000,
+	delay: 1000,
 
 	beforeModel() {
 		let version = localStorage.index_version || 0;
