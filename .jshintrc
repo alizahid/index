@@ -7,11 +7,9 @@
     "cordova",
     "datePicker",
     "AppRate",
-    "Scroll",
     "Spinner",
     "Migration",
-    "DatePicker",
-    "Dialog",
+    "ThreeDeeTouch",
     "shortid"
   ],
   "browser": true,
