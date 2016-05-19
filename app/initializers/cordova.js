@@ -1,7 +1,7 @@
 export function initialize(app) {
 	app.deferReadiness();
 
-	document.addEventListener('deviceready', function() {
+	document.addEventListener('deviceready', () => {
 		AppRate.preferences.storeAppURL.ios = '1078789240';
 		AppRate.preferences.storeAppURL.android = 'market://details?id=io.index';
 
