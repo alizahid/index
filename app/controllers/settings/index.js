@@ -50,13 +50,11 @@ export default Ember.Controller.extend({
 				store.adapterFor('application').clear();
 				store.unloadAll();
 
-				this.store.query('currency', {
-					default: true
-				}).then((currency) => {
+				this.store.findAll('currency').then((currencies) => {
 					this.store.createRecord('account', {
 						id: 'default',
 						name: 'Default',
-						currency: currency.get('firstObject')
+						currency: currencies.get('firstObject')
 					}).save().then(() => {
 						Spinner.hide();
 

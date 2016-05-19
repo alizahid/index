@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 
 			switch (id) {
 				case 'designplox':
-					url = 'http://designplox.com/';
+					url = 'https://designplox.com/';
 					break;
 
 				case 'icons8':

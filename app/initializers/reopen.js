@@ -1,5 +1,3 @@
-import ENV from 'index/config/environment';
-
 import Ember from 'ember';
 
 import moment from 'moment';
@@ -26,14 +24,6 @@ export function initialize() {
 				this.$().val(date);
 			}
 		})
-	});
-
-	Ember.Route.reopen({
-		beforeModel() {
-			if (ENV.APP.environment === 'web' && !localStorage.index_token && ['login', 'sign-up', 'forgot-password'].indexOf(this.routeName) < 0) {
-				this.replaceWith('login');
-			}
-		}
 	});
 }
 
