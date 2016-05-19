@@ -39,10 +39,9 @@ export default Ember.Service.extend({
 		datePicker.show({
 			date: date,
 			mode: mode || 'datetime',
-			allowFutureDates: false,
 			androidTheme: 5
 		}, (date) => {
-			if (date && typeof callback === 'function') {
+			if (date && date <= new Date() && typeof callback === 'function') {
 				callback(date);
 			}
 		});
