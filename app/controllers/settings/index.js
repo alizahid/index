@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from 'index/config/environment';
 
 export default Ember.Controller.extend({
 	helpers: Ember.inject.service('helpers'),
@@ -9,12 +10,12 @@ export default Ember.Controller.extend({
 
 			let data = this.store.adapterFor('application').data;
 
-			if (data.item && data.item.length > 0) {
+			if (data.item && (data.item.length > 0 || data.account.length > 0)) {
 				dialog.prompt('Please enter your email. We will send the link here', (email) => {
 					let regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 					if (regex.test(email)) {
-						Ember.$.ajax('http://index.designplox.co/export', {
+						Ember.$.ajax(ENV.APP.api + '/export', {
 							dataType: 'json',
 							contentType: 'application/json',
 							method: 'POST',

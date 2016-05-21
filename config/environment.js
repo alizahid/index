@@ -11,28 +11,25 @@ module.exports = function(environment, appEnv) {
 			FEATURES: {}
 		},
 
-		APP: {},
+		APP: {
+			api: 'http://index.designplox.co'
+		},
 
 		contentSecurityPolicyMeta: true,
 		contentSecurityPolicy: {
 			'default-src': ["'self'", 'data:', 'gap:'],
 			'script-src': ["'self'", "'unsafe-inline'"],
 			'font-src': ["'self'"],
-			'connect-src': ["'self'", 'http://index.designplox.co'],
+			'connect-src': ["'self'"],
 			'img-src': ["'self'"],
 			'style-src': ["'self'", "'unsafe-inline'"],
 			'media-src': ["'self'", '*']
 		}
 	};
 
-	if (environment === 'development') {
-		ENV.contentSecurityPolicy['script-src'].push('http://localhost:30820');
+	ENV.contentSecurityPolicy['connect-src'].push(ENV.APP.api);
 
-		ENV.contentSecurityPolicy['connect-src'].push('http://localhost:30820');
-		ENV.contentSecurityPolicy['connect-src'].push('ws://localhost:30820');
-
-		ENV.contentSecurityPolicy['connect-src'].push('http://localhost');
-	}
+	if (environment === 'development') {}
 
 	if (environment === 'test') {
 		ENV.baseURL = '/';
