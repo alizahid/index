@@ -41,6 +41,28 @@ export default Ember.Controller.extend({
 				dialog.alert('You have no data to export right now', 'Export');
 			}
 		},
+		importData() {
+			let dialog = this.get('helpers').dialog;
+
+			dialog.prompt('Enter the export ID we sent you over email', (id) => {
+				Spinner.show();
+
+				Ember.$.getJSON(ENV.APP.api + '/import/' + id).then((data) => {
+					localStorage.setItem('index', JSON.stringify(data));
+
+					let store = this.store;
+
+					store.adapterFor('application').init();
+					store.unloadAll();
+
+					window.history.back();
+				}, (xhr) => {
+					dialog.alert(xhr.responseJSON ? xhr.responseJSON.message : 'Something went wrong. We are calling the internet police', 'Error');
+				}).always(() => {
+					Spinner.hide();
+				});
+			}, 'Import', null, null, 'Export ID');
+		},
 		clearData() {
 			let dialog = this.get('helpers').dialog;
 

@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	accounts: Ember.computed(function() {
 		return this.store.findAll('account');
-	}),
+	}).volatile(),
 
 	actions: {
 		showFooter() {

@@ -272,6 +272,10 @@ ul {
 				background-image: url('images/menu/export.png');
 			}
 
+			&[data-icon=import]:after {
+				background-image: url('images/menu/import.png');
+			}
+
 			&[data-icon=clear]:after {
 				background-image: url('images/menu/clear.png');
 			}
