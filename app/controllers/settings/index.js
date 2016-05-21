@@ -85,7 +85,7 @@ export default Ember.Controller.extend({
 						window.history.back();
 					});
 				});
-			}, 'Remove item');
+			}, 'Clear all data');
 		},
 		rate() {
 			this.get('helpers').social.rate();
