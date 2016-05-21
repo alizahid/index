@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export function initialize(app) {
 	app.deferReadiness();
 
@@ -12,6 +14,12 @@ export function initialize(app) {
 			laterButtonLabel: 'Remind me later',
 			rateButtonLabel: 'Rate it now'
 		};
+
+		window.addEventListener('statusTap', function() {
+			Ember.$('.ember-application > .ember-view > section').stop(true, true).animate({
+				scrollTop: 0
+			});
+		});
 
 		app.advanceReadiness();
 	}, false);
