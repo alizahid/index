@@ -6,13 +6,13 @@ var Spinner = new function() {
 			$('span', spinner).text(message);
 		}
 
-		spinner.stop(true, true).fadeIn('fast');
+		spinner.stop(true, true).show();
 	};
 
 	this.hide = function() {
 		$('span', spinner).text('');
 
-		spinner.stop(true, true).fadeOut('fast');
+		spinner.stop(true, true).hide();
 	};
 };
 
@@ -24,12 +24,12 @@ var Migration = new function() {
 			$('span', spinner).text(message);
 		}
 
-		spinner.stop(true, true).fadeIn('fast');
+		spinner.stop(true, true).show();
 	};
 
 	this.hide = function() {
 		$('span', spinner).text('');
 
-		spinner.stop(true, true).fadeOut('fast');
+		spinner.stop(true, true).hide();
 	};
 };
