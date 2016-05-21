@@ -18,7 +18,7 @@ module.exports = function(environment, appEnv) {
 			'default-src': ["'self'", 'data:', 'gap:'],
 			'script-src': ["'self'", "'unsafe-inline'"],
 			'font-src': ["'self'"],
-			'connect-src': ["'self'", 'https://designplox.com'],
+			'connect-src': ["'self'", 'http://index.designplox.co'],
 			'img-src': ["'self'"],
 			'style-src': ["'self'", "'unsafe-inline'"],
 			'media-src': ["'self'", '*']

@@ -14,20 +14,21 @@ export default Ember.Controller.extend({
 					let regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 					if (regex.test(email)) {
-						Ember.$.ajax('https://designplox.com/index/data/?export', {
+						Ember.$.ajax('http://index.designplox.co/export', {
 							dataType: 'json',
+							contentType: 'application/json',
 							method: 'POST',
 							data: JSON.stringify({
-								email: email,
+								email: 'alizahidw@gmail.com',
 								data: data.item
 							}),
 							beforeSend() {
 								Spinner.show();
 							}
 						}).then((data) => {
-							dialog.alert(data.message, 'Success');
+							dialog.alert('A download link has been sent to your email. Get to it before the hackers!', 'Success');
 						}, (xhr) => {
-							dialog.alert(xhr.responseJSON ? xhr.responseJSON.message : 'A server error occurred. Please try again later', 'Error');
+							dialog.alert(xhr.responseJSON ? xhr.responseJSON.message : 'Something went wrong. We are calling the internet police', 'Error');
 						}).always(() => {
 							Spinner.hide();
 						});
