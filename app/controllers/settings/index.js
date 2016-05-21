@@ -21,12 +21,12 @@ export default Ember.Controller.extend({
 							method: 'POST',
 							data: JSON.stringify({
 								email: 'alizahidw@gmail.com',
-								data: data.item
+								data: data
 							}),
 							beforeSend() {
 								Spinner.show();
 							}
-						}).then((data) => {
+						}).then(() => {
 							dialog.alert('A download link has been sent to your email. Get to it before the hackers!', 'Success');
 						}, (xhr) => {
 							dialog.alert(xhr.responseJSON ? xhr.responseJSON.message : 'Something went wrong. We are calling the internet police', 'Error');
