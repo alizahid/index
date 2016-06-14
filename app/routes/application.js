@@ -41,13 +41,15 @@ export default Ember.Route.extend({
 	},
 
 	afterModel() {
-		ThreeDeeTouch.onHomeIconPressed = (payload) => {
-			if (payload.type === 'income') {
-				this.transitionTo('incomes');
-			} else if (payload.type === 'expense') {
-				this.transitionTo('expenses');
-			}
-		};
+		try {
+			ThreeDeeTouch.onHomeIconPressed = (payload) => {
+				if (payload.type === 'income') {
+					this.transitionTo('incomes');
+				} else if (payload.type === 'expense') {
+					this.transitionTo('expenses');
+				}
+			};
+		} catch (ex) {}
 	},
 
 	model() {
