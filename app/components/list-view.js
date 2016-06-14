@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	tagName: 'section',
 
-	items: 10,
-	delay: 250,
+	items: 20,
+	delay: 100,
 	threshold: Ember.computed(() => {
 		return Ember.$(window).height() / 3;
 	}),
