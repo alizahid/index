@@ -5,6 +5,7 @@ export default Ember.Component.extend({
 
 	tagName: 'a',
 	classNames: ['back'],
+
 	click() {
 		if (window.history.length > 1) {
 			window.history.back();
