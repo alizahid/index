@@ -16,6 +16,13 @@ export default Ember.Controller.extend({
 	}],
 
 	actions: {
+		back() {
+			if (this.account) {
+				this.send('startOver')
+			} else {
+				window.history.back();
+			}
+		},
 		startOver() {
 			this.setProperties({
 				account: null,

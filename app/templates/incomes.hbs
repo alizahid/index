@@ -1,6 +1,6 @@
 <header class="thin">
 	<h1>Add income</h1>
-	{{back-button}}
+	{{action-button class="back" action=(action 'back')}}
 </header>
 
 {{#if account}}
@@ -16,9 +16,8 @@
 				{{textarea rows="3" value=item.description placeholder="Example: Found under the couch"}}
 			</label>
 			<hr>
-			<p class="buttons">
+			<p>
 				<button type="submit">Add</button>
-				<button type="button" {{action 'startOver'}}>Start over</button>
 			</p>
 		</form>
 	</section>
