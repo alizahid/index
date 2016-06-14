@@ -522,7 +522,6 @@ ul {
 			border-radius: 1em;
 			color: #FFF;
 			content: attr(data-label);
-			display: none;
 			font-size: 0.875em;
 			left: 50%;
 			opacity: 0.75;
@@ -530,22 +529,9 @@ ul {
 			position: absolute;
 			transform: translateX(-50%);
 			white-space: nowrap;
-
-			.mobile & {
-				display: block;
-			}
 		}
 
-		.app &:hover,
-		.web &:hover {
-			&:before {
-				display: block;
-			}
-		}
-
-		.app &:hover,
-		.mobile &:active,
-		.web &:hover {
+		&:active {
 			background: #EEE;
 		}
 	}
