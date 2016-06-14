@@ -560,6 +560,10 @@ section.accounts {
 		position: relative;
 		width: 80%;
 
+		&:active {
+			background: #E0E0E0;
+		}
+
 		h3 {
 			flex: 1;
 			text-align: center;
