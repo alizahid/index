@@ -1,20 +1,24 @@
-/*jshint node:true*/
+/* jshint node: true */
 
 /* global require, module */
 
-'use strict';
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-
-module.exports = (defaults) => {
-	let app = new EmberApp(defaults, {
+module.exports = function(defaults) {
+	var app = new EmberApp(defaults, {
 		storeConfigInMeta: false,
 		fingerprint: {
-			exclude: ['assets']
+			exclude: [
+				'assets/images',
+			]
 		},
 		autoprefixer: {
-			browsers: ['> 1%']
-		}
+			browsers: [
+				'ChromeAndroid >= 1',
+				'iOS >= 1',
+				'Android >= 1',
+			]
+		},
 	});
 
 	app.import('vendor/scripts/spinner.js');

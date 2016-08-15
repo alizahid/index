@@ -1,33 +1,15 @@
 /* jshint node: true */
 
-'use strict';
-
-module.exports = function(environment, appEnv) {
-	let ENV = {
+module.exports = function(environment) {
+	var ENV = {
 		modulePrefix: 'index',
 		environment: environment,
 		defaultLocationType: 'auto',
-		EmberENV: {
-			FEATURES: {}
-		},
 
 		APP: {
-			api: 'http://index.designplox.co'
+			api: 'http://index.designplox.co',
 		},
-
-		contentSecurityPolicyMeta: true,
-		contentSecurityPolicy: {
-			'default-src': ["'self'", 'data:', 'gap:'],
-			'script-src': ["'self'", "'unsafe-inline'"],
-			'font-src': ["'self'"],
-			'connect-src': ["'self'"],
-			'img-src': ["'self'"],
-			'style-src': ["'self'", "'unsafe-inline'"],
-			'media-src': ["'self'", '*']
-		}
 	};
-
-	ENV.contentSecurityPolicy['connect-src'].push(ENV.APP.api);
 
 	if (environment === 'development') {}
 

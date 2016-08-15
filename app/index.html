@@ -10,9 +10,9 @@
 
 	{{content-for 'head'}}
 
-	<link rel="stylesheet" href="assets/vendor.css">
-	<link rel="stylesheet" href="assets/san-francisco/san-francisco.css">
-	<link rel="stylesheet" href="assets/index.css">
+	<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+	<link rel="stylesheet" href="{{rootURL}}assets/san-francisco/san-francisco.css">
+	<link rel="stylesheet" href="{{rootURL}}assets/index.css">
 
 	{{content-for 'head-footer'}}
 </head>
@@ -21,8 +21,8 @@
 	{{content-for 'body'}}
 
 	<script src="cordova.js"></script>
-	<script src="assets/vendor.js"></script>
-	<script src="assets/index.js"></script>
+	<script src="{{rootURL}}assets/vendor.js"></script>
+	<script src="{{rootURL}}assets/index.js"></script>
 
 	{{content-for 'body-footer'}}
 </body>
