@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 							contentType: 'application/json',
 							method: 'POST',
 							data: JSON.stringify({
-								email: 'alizahidw@gmail.com',
+								email: email,
 								data: data
 							}),
 							beforeSend() {
