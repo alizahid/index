@@ -82,7 +82,7 @@ export default Ember.Controller.extend({
 						account: this.model.get('id')
 					}).then((items) => {
 						if (items.get('length') > 0) {
-							this.store.findRecord('account', 'default').then((defaultAccount) => {
+							this.store.findRecord('account', 'default').then(defaultAccount => {
 								items.setEach('account', defaultAccount).save().then(() => {
 									this.model.destroyRecord().then(() => {
 										window.history.back();

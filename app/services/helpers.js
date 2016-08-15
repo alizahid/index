@@ -6,7 +6,7 @@ export default Ember.Service.extend({
 			navigator.notification.alert(message, null, title);
 		},
 		confirm(message, callback, title) {
-			navigator.notification.confirm(message, (button) => {
+			navigator.notification.confirm(message, button => {
 				if (button === 1) {
 					if (typeof callback === 'function') {
 						callback();
@@ -15,7 +15,7 @@ export default Ember.Service.extend({
 			}, title, ['Yes', 'Cancel']);
 		},
 		prompt(message, callback, title, buttonLabel, defaultValue) {
-			navigator.notification.prompt(message, (response) => {
+			navigator.notification.prompt(message, response => {
 				let button = response.buttonIndex,
 					data = response.input1;
 
@@ -40,7 +40,7 @@ export default Ember.Service.extend({
 			date: date,
 			mode: mode || 'datetime',
 			androidTheme: 5
-		}, (date) => {
+		}, date => {
 			if (date && date <= new Date() && typeof callback === 'function') {
 				callback(date);
 			}

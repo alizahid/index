@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 			this.set('item', this.get('content').get('firstObject'));
 		});
 
-		this.$().on('click', (e) => {
+		this.$().on('click', e => {
 			e.preventDefault();
 
 			this.incrementProperty('index');

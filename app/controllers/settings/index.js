@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 			let data = this.store.adapterFor('application').data;
 
 			if (data.item && (data.item.length > 0 || data.account.length > 0)) {
-				dialog.prompt('Please enter your email. We will send the link here', (email) => {
+				dialog.prompt('Please enter your email. We will send the link here', email => {
 					let regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 					if (regex.test(email)) {
@@ -21,11 +21,11 @@ export default Ember.Controller.extend({
 							method: 'POST',
 							data: JSON.stringify({
 								email: email,
-								data: data
+								data: data,
 							}),
 							beforeSend() {
 								Spinner.show();
-							}
+							},
 						}).then(() => {
 							dialog.alert('A download link has been sent to your email. Get to it before the hackers!', 'Success');
 						}, (xhr) => {
@@ -44,10 +44,10 @@ export default Ember.Controller.extend({
 		importData() {
 			let dialog = this.get('helpers').dialog;
 
-			dialog.prompt('Enter the export ID we sent you over email', (id) => {
+			dialog.prompt('Enter the export ID we sent you over email', id => {
 				Spinner.show();
 
-				Ember.$.getJSON(ENV.APP.api + '/import/' + id).then((data) => {
+				Ember.$.getJSON(ENV.APP.api + '/import/' + id).then(data => {
 					localStorage.setItem('index', JSON.stringify(data));
 
 					let store = this.store;

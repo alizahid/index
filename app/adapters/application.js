@@ -37,7 +37,7 @@ export default DS.Adapter.extend({
 
 		let exists = this.data[type.modelName].findBy('id', data.id);
 
-		return new Ember.RSVP.Promise((resolve) => {
+		return new Ember.RSVP.Promise(resolve => {
 			if (exists) {
 				resolve(exists);
 			} else {
@@ -152,10 +152,10 @@ export default DS.Adapter.extend({
 
 		let keys = Object.keys(query);
 
-		let data = (this.data[type.modelName] || type.FIXTURES || []).filter((item) => {
+		let data = (this.data[type.modelName] || type.FIXTURES || []).filter(item => {
 			let include = true;
 
-			keys.forEach((key) => {
+			keys.forEach(key => {
 				if (item[key] !== query[key]) {
 					include = false;
 				}
