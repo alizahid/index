@@ -43,10 +43,20 @@ export default Ember.Route.extend({
 	afterModel() {
 		try {
 			ThreeDeeTouch.onHomeIconPressed = (payload) => {
+				let current = Ember.getOwner(this).lookup('controller:application').currentPath;
+
 				if (payload.type === 'income') {
-					this.transitionTo('incomes');
+					if (current === 'expenses') {
+						this.replaceWith('incomes');
+					} else {
+						this.transitionTo('incomes');
+					}
 				} else if (payload.type === 'expense') {
-					this.transitionTo('expenses');
+					if (current === 'incomes') {
+						this.replaceWith('expenses');
+					} else {
+						this.transitionTo('expenses');
+					}
 				}
 			};
 		} catch (ex) {}
