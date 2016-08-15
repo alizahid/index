@@ -1,9 +1,10 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
 
-const Currency = DS.Model.extend({
-	name: DS.attr('string'),
-	symbol: DS.attr('string'),
+const Currency = Model.extend({
+	name: attr(),
+	symbol: attr(),
 
 	print: Ember.computed(function() {
 		return this.get('symbol') || this.get('id');

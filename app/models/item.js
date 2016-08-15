@@ -1,12 +1,16 @@
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import {
+	belongsTo,
+} from 'ember-data/relationships';
 
-export default DS.Model.extend({
-	account: DS.belongsTo('account'),
-	type: DS.attr('string'),
-	category: DS.attr('string'),
-	description: DS.attr('string'),
-	amount: DS.attr('number'),
-	time: DS.attr('date', {
+export default Model.extend({
+	account: belongsTo('account'),
+	type: attr(),
+	category: attr(),
+	description: attr(),
+	amount: attr('number'),
+	time: attr({
 		defaultValue() {
 			return new Date();
 		}

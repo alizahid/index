@@ -1,17 +1,22 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import {
+	belongsTo,
+	hasMany,
+} from 'ember-data/relationships';
 
-export default DS.Model.extend({
-	name: DS.attr('string'),
-	items: DS.hasMany('item'),
-	currency: DS.belongsTo('currency'),
+export default Model.extend({
+	name: attr(),
+	items: hasMany('item'),
+	currency: belongsTo('currency'),
 
 	isDefault: Ember.computed(function() {
-		return this.id === 'default';
+		return this.get('id') === 'default';
 	}),
 
 	total: Ember.computed(function() {
-		return this.get('items').reduce(function(total, item) {
+		return this.get('items').reduce((total, item) => {
 			if (item.get('type') === 'income') {
 				total += item.get('amount');
 			} else if (item.get('type') === 'expense') {
@@ -20,5 +25,5 @@ export default DS.Model.extend({
 
 			return total;
 		}, 0);
-	}).volatile()
+	}).volatile(),
 });
